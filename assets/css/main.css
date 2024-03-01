@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    outline: none;
+    background: linear-gradient(
+      60deg,
+      #C35D7C 5%,
+      #D78CA3 15%,
+      #CA6C88 30%,
+      #D17C95 50%,
+      #CA6C88 70%,
+      #D78CA3 80%,
+      #C35D7C 95%
+    );
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
