@@ -1,9 +1,26 @@
 <template>
-  <div class="album-art-wrapper">
-    <div class="album-art">
-      <div class="album-art-shine"></div>
-      <div class="left-wing"></div>
-      <div class="right-wing"></div>
+  <!-- <div>
+
+  </div> -->
+  <div class="content-wrapper">
+    <div class="track-panel">
+      <div class="track-art">
+        <!-- <div class="album-art-shine"></div> -->
+        <div class="left-wing"></div>
+        <div class="right-wing"></div>
+      </div>
+      <div class="track-info">
+        <div class="track-name">Bijoux Mix</div>
+        <div class="track-tags">Hyperpop / Club</div>
+        <ul class="track-links">
+          <li class="track-link-item" id="soundcloud"><a href="" ></a></li>
+          <li class="track-link-item" id="youtube"><a href=""></a></li>
+          <li class="track-link-item"><a href=""></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="">
+
     </div>
   </div>
 
@@ -15,15 +32,19 @@
 
 <style scoped>
 
-  .album-art-wrapper {
-    overflow: hidden;
+  .content-wrapper {
+    width: 80%;
+    height: 475px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: calc(50vh - 275px)
   }
 
-  .album-art {
+  .track-art {
+    display: inline-block;
     position: relative;
-    width: 500px; 
-    height: 500px;
-    margin: calc(50vh - 300px) 0 0 200px;
+    width: 450px; 
+    height: 450px;
     border: 20px solid rgba(0, 0, 0, .15);
     border-radius: 10px;
     opacity: 1; 
@@ -48,7 +69,7 @@
   .right-wing {
     position: relative;
     top: 94px;
-    left: 464px;
+    left: 414px;
     width: 140px;
     height: 96px;
     background-image: url("right-wing.svg");
@@ -56,6 +77,55 @@
     background-size: cover;
     animation: 1.5s flapRight infinite;
   }
+  
+  .track-info {
+    display: inline-block;
+    vertical-align: top;
+    padding: 100px 0 100px 150px;
+    width: 450px;
+    color: #fffee6;
+    padding-right: 10px;
+  }
+
+  .track-name {
+    font-weight: 700;
+    font-size: 60px;
+    margin-bottom: 10px;
+  }
+
+  .track-tags {
+    font-weight: 600;
+    font-size: 25px;
+  }
+
+  .track-links {
+    list-style: none;
+    margin: 50px 0 0 0;
+    padding: 0;
+    width: 100%;
+    height: 80px;
+  }
+
+  .track-link-item {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+    /* border: 2px solid #fffee6; */
+    border-radius: 5px;
+  }
+
+  #soundcloud {
+    background-image: url("soundcloud.svg");
+    background-size: cover;
+  }
+
+  #youtube {
+    background-image: url("youtube.svg");
+    background-size: 70px 70px;
+    background-repeat: no-repeat;
+  }
+
 
   @keyframes flapLeft {
 
