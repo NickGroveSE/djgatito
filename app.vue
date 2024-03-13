@@ -21,7 +21,15 @@
     </div>
     <div class="bio-panel">
       <svg id="logo"></svg>
-      <div id="bio"></div>
+      <div id="bio">
+        <div class="social-link" id="email-link"></div>
+        <div class="social-link" id="insta-social"></div>
+        <div class="social-link" id="soundcloud-social"></div>
+        <div class="social-link"></div>
+        <div class="social-link" id="tiktok-social"></div>
+        <div class="social-link" id="youtube-social"></div>
+        
+      </div>
     </div>
   </div>
 
@@ -162,8 +170,54 @@
   #bio {
     width: 220px;
     height: 58%;
-    margin: 40px auto 40px auto;
+    margin: 70px auto 40px auto;
+    color: #fffee6;
   }
+
+
+  .social-link {
+    width: 80px;
+    height: 80px;
+    margin: 15px;
+    display: inline-block;
+    transition: 0.8s;
+    border-radius: 15px;
+  }
+
+  #email-link {
+    background-image: url("mail_email_icon.svg");
+    background-size: cover;
+  }
+
+  #tiktok-social {
+    background-image: url("tiktok-square.svg");
+    background-size: cover;
+  }
+
+  #insta-social {
+    background-image: url("instagram-square.svg");
+    background-size: cover;
+  }
+
+  #soundcloud-social {
+    background-image: url("soundcloud-square.svg");
+    background-size: cover;
+  }
+
+  #youtube-social {
+    background-image: url("youtube-square.svg");
+    background-size: cover;
+  }
+
+  #bandcamp-social {
+    background-color: #fffee6;
+  }
+
+  .social-link:hover {
+    filter: drop-shadow(10px 10px 4px rgba(0,0,0,0.2));
+    background-color: #C35D7C;
+  }
+
 
   @keyframes flapLeft {
 
