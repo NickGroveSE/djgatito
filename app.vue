@@ -19,8 +19,9 @@
         </ul>
       </div>
     </div>
-    <div class="">
-
+    <div class="bio-panel">
+      <svg id="logo"></svg>
+      <div id="bio"></div>
     </div>
   </div>
 
@@ -34,23 +35,29 @@
 
   .content-wrapper {
     width: 80%;
-    height: 475px;
+    height: 675px;
     margin-right: auto;
     margin-left: auto;
-    margin-top: calc(50vh - 275px)
+    margin-top: calc(50vh - 375px)
+  }
+
+  .track-panel {
+    display: inline-block;
+    width: 75%;
   }
 
   .track-art {
     display: inline-block;
     position: relative;
+    margin: 100px 0 100px 0;
     width: 450px; 
     height: 450px;
-    border: 20px solid rgba(0, 0, 0, .15);
     border-radius: 10px;
     opacity: 1; 
     background-image: url("https://i1.sndcdn.com/artworks-aWYsfzNUWCCNZTNw-zPe9lQ-t500x500.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    filter: drop-shadow(20px 20px 4px rgba(0,0,0,0.2));
     animation: 1.5s fly infinite;
   }
 
@@ -59,8 +66,8 @@
     top: 190px;
     left: -104px;
     width: 140px;
-    height: 96px;
-    background-image: url("left-wing.svg");
+    height: 98px;
+    background-image: url("left-wing-large.svg");
     background-repeat: no-repeat;
     background-size: cover;
     animation: 1.5s flapLeft infinite;
@@ -71,8 +78,8 @@
     top: 94px;
     left: 414px;
     width: 140px;
-    height: 96px;
-    background-image: url("right-wing.svg");
+    height: 98px;
+    background-image: url("right-wing-large.svg");
     background-repeat: no-repeat;
     background-size: cover;
     animation: 1.5s flapRight infinite;
@@ -82,7 +89,8 @@
     display: inline-block;
     vertical-align: top;
     padding: 100px 0 100px 150px;
-    width: 450px;
+    margin: 100px 0 100px 0;
+    width: 35%;
     color: #fffee6;
     padding-right: 10px;
   }
@@ -113,6 +121,8 @@
     margin-right: 20px;
     /* border: 2px solid #fffee6; */
     border-radius: 5px;
+    overflow: hidden;
+    filter: drop-shadow(20px 20px 4px rgba(0,0,0,0.2));
   }
 
   #soundcloud {
@@ -126,6 +136,34 @@
     background-repeat: no-repeat;
   }
 
+  .bio-panel {
+    margin-left: 50px;
+    width: 20%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    background-color: rgba(255, 254, 230, 0.2);
+    border-radius: 10px;
+  }
+  
+  #logo {
+    display: block;
+    position: relative;
+    width: 187px;
+    height: 151px;
+    background-image: url("bbflanfinal.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 40px auto 0 auto;
+    left: -5px;
+    border-radius: 10px;
+  }
+
+  #bio {
+    width: 220px;
+    height: 58%;
+    margin: 40px auto 40px auto;
+  }
 
   @keyframes flapLeft {
 
@@ -161,38 +199,38 @@
 
   }
 
-  /* .album-art-shine {
+  /* .button-shine {
     position: relative;
     top: 0;
     left: -700px;
-    width: 400px;
-    height: 500px;
+    width: 50px;
+    height: 80px;
     transform: skewX(-30deg);
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     overflow: hidden;
     transition: 0.8s;
-    animation: 8s shine infinite;
+    animation: 12s shine infinite;
   }
 
   @keyframes shine {
 
     70% {
-      left: -700px;
+      left: -120px;
       background: rgba(255, 255, 255, 0.15);
     }
 
     80% {
-      left: 700px;
+      left: 120px;
       background: rgba(255, 255, 255, 0.15);
     }
 
     88% {
-      left: 700px;
+      left: 120px;
       background: rgba(255, 255, 255, 0.15);
     }
 
     100% {
-      left: -700px;
+      left: -120px;
       background: rgba(255, 255, 255, 0.15);
     }
     
