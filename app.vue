@@ -13,21 +13,21 @@
         <div class="track-name">Bijoux Mix</div>
         <div class="track-tags">Hyperpop / Club</div>
         <ul class="track-links">
-          <li class="track-link-item" id="soundcloud"><a href="" ></a></li>
-          <li class="track-link-item" id="youtube"><a href=""></a></li>
-          <li class="track-link-item"><a href=""></a></li>
+          <li class="track-link-item" id="soundcloud-social"><a href="" ></a></li>
+          <li class="track-link-item" id="youtube-social"><a href=""></a></li>
+          <li class="track-link-item" id="bandcamp-social"><a href=""></a></li>
         </ul>
       </div>
     </div>
     <div class="bio-panel">
       <svg id="logo"></svg>
       <div id="bio">
-        <div class="social-link" id="email-link"></div>
-        <div class="social-link" id="insta-social"></div>
-        <div class="social-link" id="soundcloud-social"></div>
-        <div class="social-link"></div>
-        <div class="social-link" id="tiktok-social"></div>
-        <div class="social-link" id="youtube-social"></div>
+        <div class="social-link-item" id="email-link"></div>
+        <div class="social-link-item" id="insta-social"></div>
+        <div class="social-link-item" id="soundcloud-social"></div>
+        <div class="social-link-item"></div>
+        <div class="social-link-item" id="tiktok-social"></div>
+        <div class="social-link-item" id="youtube-social"></div>
         
       </div>
     </div>
@@ -65,7 +65,7 @@
     background-image: url("https://i1.sndcdn.com/artworks-aWYsfzNUWCCNZTNw-zPe9lQ-t500x500.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    filter: drop-shadow(20px 20px 4px rgba(0,0,0,0.2));
+    filter: drop-shadow(20px 15px 4px rgba(0,0,0,0.2));
     animation: 1.5s fly infinite;
   }
 
@@ -99,7 +99,7 @@
     padding: 100px 0 100px 150px;
     margin: 100px 0 100px 0;
     width: 35%;
-    color: #fffee6;
+    color: var(--accent-color);
     padding-right: 10px;
   }
 
@@ -127,10 +127,11 @@
     width: 80px;
     height: 80px;
     margin-right: 20px;
-    /* border: 2px solid #fffee6; */
-    border-radius: 5px;
+    /* border: 2px solid var(--accent-color); */
     overflow: hidden;
-    filter: drop-shadow(20px 20px 4px rgba(0,0,0,0.2));
+    filter: drop-shadow(20px 15px 4px rgba(0,0,0,0.2));
+    transition: 0.8s;
+    border-radius: 15px;
   }
 
   #soundcloud {
@@ -171,11 +172,11 @@
     width: 220px;
     height: 58%;
     margin: 70px auto 40px auto;
-    color: #fffee6;
+    color: var(--accent-color);
   }
 
 
-  .social-link {
+  .social-link-item {
     width: 80px;
     height: 80px;
     margin: 15px;
@@ -189,9 +190,17 @@
     background-size: cover;
   }
 
+  #email-link:hover {
+    background-color: #C35D7C;
+  }
+
   #tiktok-social {
     background-image: url("tiktok-square.svg");
     background-size: cover;
+  }
+
+  #tiktok-social:hover {
+    background-color: var(--tiktok);
   }
 
   #insta-social {
@@ -199,9 +208,17 @@
     background-size: cover;
   }
 
+  #insta-social:hover {
+    background-color: var(--insta);
+  }
+
   #soundcloud-social {
     background-image: url("soundcloud-square.svg");
     background-size: cover;
+  }
+
+  #soundcloud-social:hover {
+    background-color: var(--soundcloud);
   }
 
   #youtube-social {
@@ -209,13 +226,20 @@
     background-size: cover;
   }
 
-  #bandcamp-social {
-    background-color: #fffee6;
+  #youtube-social:hover {
+    background-color: var(--youtube);
   }
 
-  .social-link:hover {
-    filter: drop-shadow(10px 10px 4px rgba(0,0,0,0.2));
+  #bandcamp-social {
+    background-color: var(--accent-color);
+  }
+
+  .track-link-item:hover {
     background-color: #C35D7C;
+  }
+
+  .social-link-item:hover {
+    filter: drop-shadow(10px 10px 4px rgba(0,0,0,0.2));
   }
 
 

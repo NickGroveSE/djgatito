@@ -1,3 +1,12 @@
+:root {
+    --accent-color: #FFFEE6;
+    --soundcloud: #FF7700;
+    --youtube: #FF0000;
+    --tiktok: #000000;
+    --insta: #E1306C;
+    --bandcamp: #629AA9;
+}
+
 body {
     margin: 0;
     width: 100%;
@@ -26,3 +35,53 @@ body {
 body::-webkit-scrollbar {
     display: none;
 }
+
+#email-link {
+    background-image: url("mail_email_icon.svg");
+    background-size: cover;
+  }
+
+  #email-link:hover {
+    background-color: #C35D7C;
+  }
+
+  #tiktok-social {
+    background-image: url("tiktok-square.svg");
+    background-size: cover;
+  }
+
+  #tiktok-social:hover {
+    background-color: var(--tiktok);
+  }
+
+  #insta-social {
+    background-image: url("instagram-square.svg");
+    background-size: cover;
+  }
+
+  #insta-social:hover {
+    background-color: var(--insta);
+  }
+
+  #soundcloud-social {
+    background-image: url("soundcloud-square.svg");
+    background-size: cover;
+  }
+
+  #soundcloud-social:hover {
+    background-color: var(--soundcloud);
+  }
+
+  #youtube-social {
+    background-image: url("youtube-square.svg");
+    background-size: cover;
+  }
+
+  #youtube-social:hover {
+    background-color: var(--youtube);
+  }
+
+  #bandcamp-social {
+    background-color: var(--accent-color);
+  }
+
