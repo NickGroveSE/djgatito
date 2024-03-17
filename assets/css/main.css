@@ -82,6 +82,11 @@ body::-webkit-scrollbar {
   }
 
   #bandcamp-social {
-    background-color: var(--accent-color);
+    background-image: url("bandcamp-svgrepo-com2.svg");
+    background-size: cover;
+  }
+
+  #bandcamp-social:hover {
+    background-color: var(--bandcamp);
   }
 

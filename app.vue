@@ -1,137 +1,130 @@
-<template>
-  <!-- <div>
+<script setup>
+  import Track from "../components/Track.vue"
+  import { reactive } from 'vue';
+  
+  let trackState = reactive({position: 0})
 
-  </div> -->
+  const tracks = [
+    {
+      title: "Easy (Remix)",
+      genres: "K-Pop / Club",
+      arturl: "https://i1.sndcdn.com/artworks-zO6C1vbyLJZ9K4nk-zXvPUQ-t500x500.jpg",
+      links: [
+        "https://soundcloud.com/dj-bbflan/easy-le-sserafim-club-remix",
+        "https://www.youtube.com/watch?v=ZKgt-JDbnHk",
+        "https://djbbflan.bandcamp.com/track/ez"
+      ]
+    },
+    {
+      title: "Bijoux Mix",
+      genres: "Hyperpop / Club",
+      arturl: "https://i1.sndcdn.com/artworks-aWYsfzNUWCCNZTNw-zPe9lQ-t500x500.jpg",
+      links: [
+        "https://soundcloud.com/dj-bbflan/bijoux-mix",
+        "https://www.youtube.com/watch?v=MOQvQiBtIf0",
+        "https://djbbflan.bandcamp.com/track/bijoux-mix"
+      ]
+    }
+  ]
+
+  let indicator = [" indicated", ""]
+
+  function handleChange(index) {
+    indicator[trackState.position] = ""
+    indicator[index] = " indicated"
+    trackState.position = index
+  }
+
+</script>
+
+<template>
   <div class="content-wrapper">
     <div class="track-panel">
-      <div class="track-art">
-        <!-- <div class="album-art-shine"></div> -->
-        <div class="left-wing"></div>
-        <div class="right-wing"></div>
+      <Track 
+        class="track"
+        :title="tracks[trackState.position].title"
+        :genres="tracks[trackState.position].genres"
+        :arturl="tracks[trackState.position].arturl"
+        :links="tracks[trackState.position].links"
+      />
+      <div id="carousel-wrapper">
+        <div id="carousel-nav" :style="`width: calc(${tracks.length} * 90px + 20px)`">
+          <div
+            v-for="(track, index) in tracks"
+            :class="`carousel-nav-item${indicator[index]}`"
+            :style="`background-image: url(${track.arturl})`"
+            @click="handleChange(index)"
+          ></div>
+        </div>
       </div>
-      <div class="track-info">
-        <div class="track-name">Bijoux Mix</div>
-        <div class="track-tags">Hyperpop / Club</div>
-        <ul class="track-links">
-          <li class="track-link-item" id="soundcloud-social"><a href="" ></a></li>
-          <li class="track-link-item" id="youtube-social"><a href=""></a></li>
-          <li class="track-link-item" id="bandcamp-social"><a href=""></a></li>
-        </ul>
-      </div>
+      
     </div>
+    
     <div class="bio-panel">
       <svg id="logo"></svg>
-      <div id="bio">
-        <div class="social-link-item" id="email-link"></div>
-        <div class="social-link-item" id="insta-social"></div>
-        <div class="social-link-item" id="soundcloud-social"></div>
-        <div class="social-link-item"></div>
-        <div class="social-link-item" id="tiktok-social"></div>
-        <div class="social-link-item" id="youtube-social"></div>
-        
+      <div id="bio">Hi! I'm DJ BB Flan</div>
+      <div id="links">
+        <a class="social-link-item" id="email-link" href="yum@djbbflan.com"></a>
+        <a class="social-link-item" id="insta-social" href="https://www.instagram.com/djbbflan/"></a>
+        <a class="social-link-item" id="soundcloud-social" href="https://soundcloud.com/dj-bbflan"></a>
+        <a class="social-link-item" id="bandcamp-social" href="https://djbbflan.bandcamp.com/music"></a>
+        <a class="social-link-item" id="tiktok-social" href="https://www.tiktok.com/@djbbflan"></a>
+        <a class="social-link-item" id="youtube-social" href="https://www.youtube.com/@DJbbFlan"></a>
       </div>
     </div>
   </div>
-
+  <footer>created by <a class="footer-element" href="https://nickgrove.netlify.app/">Nick Grove</a> powered by <a class="footer-element" href="https://nuxt.com/">Nuxt.js</a></footer>
 </template>
-
-<script>
-
-</script>
 
 <style scoped>
 
   .content-wrapper {
-    width: 80%;
+    width: 100%;
     height: 675px;
     margin-right: auto;
     margin-left: auto;
-    margin-top: calc(50vh - 375px)
+    margin-top: calc(50vh - 375px);
   }
 
   .track-panel {
     display: inline-block;
-    width: 75%;
-  }
-
-  .track-art {
-    display: inline-block;
-    position: relative;
-    margin: 100px 0 100px 0;
-    width: 450px; 
-    height: 450px;
-    border-radius: 10px;
-    opacity: 1; 
-    background-image: url("https://i1.sndcdn.com/artworks-aWYsfzNUWCCNZTNw-zPe9lQ-t500x500.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: drop-shadow(20px 15px 4px rgba(0,0,0,0.2));
-    animation: 1.5s fly infinite;
-  }
-
-  .left-wing {
-    position: relative;
-    top: 190px;
-    left: -104px;
-    width: 140px;
-    height: 98px;
-    background-image: url("left-wing-large.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    animation: 1.5s flapLeft infinite;
-  }
-
-  .right-wing {
-    position: relative;
-    top: 94px;
-    left: 414px;
-    width: 140px;
-    height: 98px;
-    background-image: url("right-wing-large.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    animation: 1.5s flapRight infinite;
-  }
-  
-  .track-info {
-    display: inline-block;
-    vertical-align: top;
-    padding: 100px 0 100px 150px;
-    margin: 100px 0 100px 0;
-    width: 35%;
-    color: var(--accent-color);
-    padding-right: 10px;
-  }
-
-  .track-name {
-    font-weight: 700;
-    font-size: 60px;
-    margin-bottom: 10px;
-  }
-
-  .track-tags {
-    font-weight: 600;
-    font-size: 25px;
-  }
-
-  .track-links {
-    list-style: none;
-    margin: 50px 0 0 0;
-    padding: 0;
-    width: 100%;
-    height: 80px;
-  }
-
-  .track-link-item {
-    display: inline-block;
-    width: 80px;
-    height: 80px;
-    margin-right: 20px;
-    /* border: 2px solid var(--accent-color); */
+    width: 70%;
+    height: 675px;
     overflow: hidden;
-    filter: drop-shadow(20px 15px 4px rgba(0,0,0,0.2));
+  }
+
+  .track {
+    display: inline-block;
     transition: 0.8s;
-    border-radius: 15px;
+  }
+
+  #carousel-wrapper {
+    width: 100%; 
+    height: 100%;
+    margin: 20px 0 0 125px;
+  }
+
+  #carousel-nav {
+    height: 70px;
+    margin: 30px auto 0 auto;
+  }
+
+
+  .carousel-nav-item {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+    display: inline-block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    border-radius: 5px;
+    border: 10px solid rgba(0,0,0,0);
+    transition: 0.8s;
+  }
+
+  .indicated {
+    border: 10px solid rgba(0,0,0, 0.15);
   }
 
   #soundcloud {
@@ -147,12 +140,13 @@
 
   .bio-panel {
     margin-left: 50px;
-    width: 20%;
+    width: 16%;
     height: 100%;
     display: inline-block;
     vertical-align: top;
     background-color: rgba(255, 254, 230, 0.2);
     border-radius: 10px;
+    margin-right: 200px;
   }
   
   #logo {
@@ -170,112 +164,52 @@
 
   #bio {
     width: 220px;
-    height: 58%;
-    margin: 70px auto 40px auto;
+    height: 80px;
+    margin: 20px auto 0 auto;
+    font-size: 16px;
+    color: var(--accent-color);
+  }
+
+  #links {
+    width: 220px;
+    margin: 20px auto 20px auto;
     color: var(--accent-color);
   }
 
 
   .social-link-item {
-    width: 80px;
-    height: 80px;
-    margin: 15px;
+    width: 70px;
+    height: 70px;
+    margin: 20px;
     display: inline-block;
     transition: 0.8s;
     border-radius: 15px;
   }
 
-  #email-link {
-    background-image: url("mail_email_icon.svg");
-    background-size: cover;
-  }
-
-  #email-link:hover {
-    background-color: #C35D7C;
-  }
-
-  #tiktok-social {
-    background-image: url("tiktok-square.svg");
-    background-size: cover;
-  }
-
-  #tiktok-social:hover {
-    background-color: var(--tiktok);
-  }
-
-  #insta-social {
-    background-image: url("instagram-square.svg");
-    background-size: cover;
-  }
-
-  #insta-social:hover {
-    background-color: var(--insta);
-  }
-
-  #soundcloud-social {
-    background-image: url("soundcloud-square.svg");
-    background-size: cover;
-  }
-
-  #soundcloud-social:hover {
-    background-color: var(--soundcloud);
-  }
-
-  #youtube-social {
-    background-image: url("youtube-square.svg");
-    background-size: cover;
-  }
-
-  #youtube-social:hover {
-    background-color: var(--youtube);
-  }
-
-  #bandcamp-social {
-    background-color: var(--accent-color);
-  }
-
-  .track-link-item:hover {
-    background-color: #C35D7C;
-  }
+  
 
   .social-link-item:hover {
     filter: drop-shadow(10px 10px 4px rgba(0,0,0,0.2));
   }
 
-
-  @keyframes flapLeft {
-
-    28% {
-      rotate: -10deg;
-      top: 195px;
-    }
-    
+  footer {
+    font-size: 18px;
+    color: var(--accent-color);
+    vertical-align: bottom;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    line-height: 100%;
   }
 
-  @keyframes flapRight {
-
-    28% {
-      rotate: 10deg;
-      top: 99px;
-    }
-
+  .footer-element {
+    color: 	#7816b1;
+    font-weight: 900;
   }
 
-  @keyframes fly {
-
-    0% {
-      top: 0px;
-    }
-
-    40% {
-      top: -15px;
-    }
-
-    100% {
-      top: 0px;
-    }
-
-  }
 
   /* .button-shine {
     position: relative;

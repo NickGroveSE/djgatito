@@ -1,52 +1,44 @@
-<template>
-    <div class="track-panel">
-      <div class="track-art">
-        <div class="left-wing"></div>
-        <div class="right-wing"></div>
-      </div>
-      <div class="track-info">
-        <div class="track-name">Bijoux Mix</div>
-        <div class="track-tags">Hyperpop / Club</div>
-        <ul class="track-links">
-          <li class="track-link-item" id="soundcloud-social"><a href="" ></a></li>
-          <li class="track-link-item" id="youtube-social"><a href=""></a></li>
-          <li class="track-link-item" id="bandcamp-social"><a href=""></a></li>
-        </ul>
-      </div>
-    </div>
-</template>
-
 <script setup>
     defineProps({
-        arturl: String,
         title: String,
         genres: String,
+        arturl: String,
         links: Object
     })
 </script>
 
+<template>
+    <div class="track-art" :style="`background-image: url(${arturl})`">
+      <div class="left-wing"></div>
+      <div class="right-wing"></div>
+    </div>
+    <div class="track-info">
+      <div class="track-name">{{ title }}</div>
+      <div class="track-tags">{{ genres }}</div>
+      <div class="track-links">
+        <a class="track-link-item" id="soundcloud-social" :href="links[0]" ></a>
+        <a class="track-link-item" id="youtube-social" :href="links[1]"></a>
+        <a class="track-link-item" id="bandcamp-social" :href="links[2]"></a>
+      </div>
+    </div>
+</template>
     
-
 <style scoped>
-
-.track-panel {
-    display: inline-block;
-    width: 75%;
-  }
 
   .track-art {
     display: inline-block;
     position: relative;
-    margin: 100px 0 100px 0;
+    margin: 100px 0 0 200px;
     width: 450px; 
     height: 450px;
     border-radius: 10px;
     opacity: 1; 
-    background-image: url("https://i1.sndcdn.com/artworks-aWYsfzNUWCCNZTNw-zPe9lQ-t500x500.jpg");
+    /* background-image: url("https://i1.sndcdn.com/artworks-aWYsfzNUWCCNZTNw-zPe9lQ-t500x500.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
     filter: drop-shadow(20px 15px 4px rgba(0,0,0,0.2));
     animation: 1.5s fly infinite;
+    transition: 0.8s;
   }
 
   .left-wing {
@@ -76,7 +68,7 @@
   .track-info {
     display: inline-block;
     vertical-align: top;
-    padding: 100px 0 100px 150px;
+    padding: 100px 0 0 150px;
     margin: 100px 0 100px 0;
     width: 35%;
     color: var(--accent-color);
@@ -92,12 +84,11 @@
   .track-tags {
     font-weight: 600;
     font-size: 25px;
+    transition: 0.8s;
   }
 
   .track-links {
-    list-style: none;
     margin: 50px 0 0 0;
-    padding: 0;
     width: 100%;
     height: 80px;
   }
