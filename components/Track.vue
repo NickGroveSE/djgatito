@@ -16,9 +16,9 @@
       <div class="track-name">{{ title }}</div>
       <div class="track-tags">{{ genres }}</div>
       <div class="track-links">
-        <a class="track-link-item" id="soundcloud-social" :href="links[0]" ></a>
-        <a class="track-link-item" id="youtube-social" :href="links[1]"></a>
-        <a class="track-link-item" id="bandcamp-social" :href="links[2]"></a>
+        <a v-if="links.soundcloud" class="track-link-item" id="soundcloud-social" :href="links.soundcloud"></a>
+        <a v-if="links.youtube" class="track-link-item" id="youtube-social" :href="links.youtube"></a>
+        <a v-if="links.bandcamp" class="track-link-item" id="bandcamp-social" :href="links.bandcamp"></a>
       </div>
     </div>
 </template>
@@ -38,7 +38,7 @@
     background-size: cover;
     filter: drop-shadow(20px 15px 4px rgba(0,0,0,0.2));
     animation: 1.5s fly infinite;
-    transition: 0.8s;
+    transition:0.8s;
   }
 
   .left-wing {
@@ -69,7 +69,7 @@
     display: inline-block;
     vertical-align: top;
     padding: 100px 0 0 150px;
-    margin: 100px 0 100px 0;
+    /* margin: 100px 0 0 0; */
     width: 35%;
     color: var(--accent-color);
     padding-right: 10px;

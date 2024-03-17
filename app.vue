@@ -9,30 +9,42 @@
       title: "Easy (Remix)",
       genres: "K-Pop / Club",
       arturl: "https://i1.sndcdn.com/artworks-zO6C1vbyLJZ9K4nk-zXvPUQ-t500x500.jpg",
-      links: [
-        "https://soundcloud.com/dj-bbflan/easy-le-sserafim-club-remix",
-        "https://www.youtube.com/watch?v=ZKgt-JDbnHk",
-        "https://djbbflan.bandcamp.com/track/ez"
-      ]
+      links: {
+        "soundcloud":"https://soundcloud.com/dj-bbflan/easy-le-sserafim-club-remix",
+        "youtube":"https://www.youtube.com/watch?v=ZKgt-JDbnHk",
+        "bandcamp":"https://djbbflan.bandcamp.com/track/ez"
+      }
     },
     {
       title: "Bijoux Mix",
       genres: "Hyperpop / Club",
       arturl: "https://i1.sndcdn.com/artworks-aWYsfzNUWCCNZTNw-zPe9lQ-t500x500.jpg",
-      links: [
-        "https://soundcloud.com/dj-bbflan/bijoux-mix",
-        "https://www.youtube.com/watch?v=MOQvQiBtIf0",
-        "https://djbbflan.bandcamp.com/track/bijoux-mix"
-      ]
+      links: {
+        "soundcloud":"https://soundcloud.com/dj-bbflan/bijoux-mix",
+        "youtube":"https://www.youtube.com/watch?v=MOQvQiBtIf0",
+        "bandcamp":"https://djbbflan.bandcamp.com/track/bijoux-mix"
+      }
+    },
+    {
+      title: "On my way! 2 Bäreneck",
+      genres: "TBD",
+      arturl: "https://i1.sndcdn.com/artworks-8xd6tp4lck6Ll3fB-gDDPJA-t500x500.jpg",
+      links: {
+        "soundcloud":"https://soundcloud.com/dj-bbflan/on-my-way-2-bareneck",
+        "bandcamp":"https://djbbflan.bandcamp.com/track/on-my-way-2-b-reneck"
+      }
     }
+
   ]
 
-  let indicator = [" indicated", ""]
+  let indicator = [" indicated", "", ""]
 
   function handleChange(index) {
     indicator[trackState.position] = ""
     indicator[index] = " indicated"
     trackState.position = index
+    const arr = Array.from(tracks[1].links)
+    console.log(arr)
   }
 
 </script>
@@ -48,7 +60,7 @@
         :links="tracks[trackState.position].links"
       />
       <div id="carousel-wrapper">
-        <div id="carousel-nav" :style="`width: calc(${tracks.length} * 90px + 20px)`">
+        <div id="carousel-nav" :style="`width: calc(${tracks.length} * 90px + 30px)`">
           <div
             v-for="(track, index) in tracks"
             :class="`carousel-nav-item${indicator[index]}`"
@@ -99,6 +111,7 @@
   }
 
   #carousel-wrapper {
+    position: relative;
     width: 100%; 
     height: 100%;
     margin: 20px 0 0 125px;
@@ -115,16 +128,17 @@
     height: 70px;
     margin-right: 10px;
     display: inline-block;
+    vertical-align: top;
     background-size: cover;
     background-repeat: no-repeat;
     vertical-align: middle;
+    border: 10px solid rgba(255,254,230,0);
     border-radius: 5px;
-    border: 10px solid rgba(0,0,0,0);
     transition: 0.8s;
   }
 
   .indicated {
-    border: 10px solid rgba(0,0,0, 0.15);
+    border: 10px solid rgba(255,254,230, 0.2);
   }
 
   #soundcloud {
