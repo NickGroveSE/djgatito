@@ -9,8 +9,8 @@
 
 <template>
     <div class="track-art" :style="`background-image: url(${arturl})`">
-      <div class="left-wing"></div>
-      <div class="right-wing"></div>
+      <div class="wing" id="left-wing"></div>
+      <div class="wing" id="right-wing"></div>
     </div>
     <div class="track-info">
       <div class="track-name">{{ title }}</div>
@@ -41,27 +41,26 @@
     transition:0.8s;
   }
 
-  .left-wing {
+  .wing {
     position: relative;
-    top: 190px;
-    left: -104px;
     width: 140px;
     height: 98px;
-    background-image: url("left-wing-large.svg");
     background-repeat: no-repeat;
     background-size: cover;
+    transition: 0.8s;
+  }
+
+  #left-wing {
+    top: 190px;
+    left: -104px;
+    background-image: url("left-wing-large.svg");
     animation: 1.5s flapLeft infinite;
   }
 
-  .right-wing {
-    position: relative;
+  #right-wing {
     top: 94px;
     left: 414px;
-    width: 140px;
-    height: 98px;
     background-image: url("right-wing-large.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
     animation: 1.5s flapRight infinite;
   }
   
@@ -71,7 +70,7 @@
     vertical-align: top;
     padding: 100px 0 0 150px;
     /* margin: 100px 0 0 0; */
-    width: 35%;
+    width: 30%;
     color: var(--accent-color);
     padding-right: 10px;
   }
@@ -98,9 +97,8 @@
     display: inline-block;
     width: 80px;
     height: 80px;
-    margin-right: 20px;
+    margin-right: 15px;
     /* border: 2px solid var(--accent-color); */
-    overflow: hidden;
     filter: drop-shadow(20px 15px 4px rgba(0,0,0,0.2));
     transition: 0.8s;
     border-radius: 15px;
@@ -142,6 +140,62 @@
       100% {
           top: 0px;
       }
+
+  }
+
+  /* Media Queries for Responsiveness */
+  @media (max-width: 1655px) {
+
+    .track-art {
+      width: 400px;
+      height: 400px;
+    }
+
+    #left-wing {
+      top: 160px;
+      animation: 1.5s flapLeft1655 infinite;
+    }
+
+    #right-wing {
+      left: 364px;
+      top: 64px;
+      animation: 1.5s flapRight1655 infinite;
+    }
+
+    .track-info {
+      width: 25%;
+    }
+
+    .track-name {
+      font-size: 50px;
+    }
+
+    .track-tags {
+      font-size: 20px;
+    }
+
+    .track-link-item {
+      width: 70px;
+      height: 70px;
+    }
+
+    @keyframes flapLeft1655 {
+
+      28% {
+          rotate: -10deg;
+          top: 165px;
+      }
+
+    }
+
+    @keyframes flapRight1655 {
+
+      28% {
+          rotate: 10deg;
+          top: 69px;
+      }
+
+    }
 
   }
 

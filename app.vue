@@ -1,6 +1,6 @@
 <script setup>
   import Track from "../components/Track.vue"
-  import { reactive } from 'vue';
+  import { reactive, onMounted } from 'vue';
   
   // Reactive Position for Tracks and Indicator
   let trackState = reactive({position: 0})
@@ -42,7 +42,9 @@
   // Array for indicating which track is being shown in the Carousel
   let indicator = [" indicated", "", ""]
 
-  setInterval(advancedCarousel, 60000)
+  onMounted(() => {
+    setInterval(advancedCarousel, 60000)
+  })
 
   function handleCarouselClick(index) {
     indicator[trackState.position] = ""
@@ -165,14 +167,13 @@
 
   /* Bio Styling */
   .bio-panel {
-    margin-left: 50px;
+    margin-left: 100px;
     width: 16%;
     height: 100%;
     display: inline-block;
     vertical-align: top;
     background-color: rgba(255, 254, 230, 0.2);
     border-radius: 10px;
-    margin-right: 200px;
   }
   
   #logo {
@@ -233,6 +234,7 @@
     color: 	#7816b1;
     font-weight: 900;
   }
+
 
   /* Possible Shine Animation */
   /* .button-shine {
