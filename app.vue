@@ -42,11 +42,25 @@
   // Array for indicating which track is being shown in the Carousel
   let indicator = [" indicated", "", ""]
 
+  setInterval(advancedCarousel, 60000)
+
   function handleCarouselClick(index) {
     indicator[trackState.position] = ""
     indicator[index] = " indicated"
 
     trackState.position = index
+  }
+
+  function advancedCarousel() {
+    if (tracks.length - 1 <= trackState.position) {
+      indicator[trackState.position] = ""
+      trackState.position = 0
+      indicator[trackState.position] = " indicated"
+    } else {
+      indicator[trackState.position] = ""
+      trackState.position = trackState.position + 1
+      indicator[trackState.position] = " indicated"
+    }
   }
 
 </script>
