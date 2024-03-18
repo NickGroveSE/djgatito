@@ -1,3 +1,4 @@
+/* Brand Colors */
 :root {
     --accent-color: #FFFEE6;
     --soundcloud: #FF7700;
@@ -7,6 +8,7 @@
     --bandcamp: #629AA9;
 }
 
+/* Metallic Background and Initialize Styling of the Body */
 body {
     margin: 0;
     width: 100%;
@@ -32,61 +34,63 @@ body {
     scrollbar-width: none; 
 }
 
+/* Scrollbar Changes for Certain Browsers */
 body::-webkit-scrollbar {
     display: none;
 }
 
+/* Links Styling and Hover */
 #email-link {
-    background-image: url("mail_email_icon.svg");
-    background-size: cover;
-  }
+  background-image: url("mail_email_icon.svg");
+  background-size: cover;
+}
 
-  #email-link:hover {
-    background-color: #C35D7C;
-  }
+#email-link:hover {
+  background-color: #C35D7C;
+}
 
-  #tiktok-social {
-    background-image: url("tiktok-square.svg");
-    background-size: cover;
-  }
+#tiktok-social {
+  background-image: url("tiktok-square.svg");
+  background-size: cover;
+}
 
-  #tiktok-social:hover {
-    background-color: var(--tiktok);
-  }
+#tiktok-social:hover {
+  background-color: var(--tiktok);
+}
 
-  #insta-social {
-    background-image: url("instagram-square.svg");
-    background-size: cover;
-  }
+#insta-social {
+  background-image: url("instagram-square.svg");
+  background-size: cover;
+}
 
-  #insta-social:hover {
-    background-color: var(--insta);
-  }
+#insta-social:hover {
+  background-color: var(--insta);
+}
 
-  #soundcloud-social {
-    background-image: url("soundcloud-square.svg");
-    background-size: cover;
-  }
+#soundcloud-social {
+  background-image: url("soundcloud-square.svg");
+  background-size: cover;
+}
 
-  #soundcloud-social:hover {
-    background-color: var(--soundcloud);
-  }
+#soundcloud-social:hover {
+  background-color: var(--soundcloud);
+}
 
-  #youtube-social {
-    background-image: url("youtube-square.svg");
-    background-size: cover;
-  }
+#youtube-social {
+  background-image: url("youtube-square.svg");
+  background-size: cover;
+}
 
-  #youtube-social:hover {
-    background-color: var(--youtube);
-  }
+#youtube-social:hover {
+  background-color: var(--youtube);
+}
 
-  #bandcamp-social {
-    background-image: url("bandcamp-svgrepo-com2.svg");
-    background-size: cover;
-  }
+#bandcamp-social {
+  background-image: url("bandcamp-svgrepo-com2.svg");
+  background-size: cover;
+}
 
-  #bandcamp-social:hover {
-    background-color: var(--bandcamp);
-  }
+#bandcamp-social:hover {
+  background-color: var(--bandcamp);
+}
 

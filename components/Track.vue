@@ -16,6 +16,7 @@
       <div class="track-name">{{ title }}</div>
       <div class="track-tags">{{ genres }}</div>
       <div class="track-links">
+        <!-- If Declarative Syntax for to check if link is inside the links Map -->
         <a v-if="links.soundcloud" class="track-link-item" id="soundcloud-social" :href="links.soundcloud"></a>
         <a v-if="links.youtube" class="track-link-item" id="youtube-social" :href="links.youtube"></a>
         <a v-if="links.bandcamp" class="track-link-item" id="bandcamp-social" :href="links.bandcamp"></a>
@@ -25,15 +26,14 @@
     
 <style scoped>
 
+  /* Track Artwork and Wings Styling */
   .track-art {
     display: inline-block;
     position: relative;
-    margin: 100px 0 0 200px;
+    margin: 50px 0 0 200px;
     width: 450px; 
     height: 450px;
     border-radius: 10px;
-    opacity: 1; 
-    /* background-image: url("https://i1.sndcdn.com/artworks-aWYsfzNUWCCNZTNw-zPe9lQ-t500x500.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
     filter: drop-shadow(20px 15px 4px rgba(0,0,0,0.2));
@@ -65,6 +65,7 @@
     animation: 1.5s flapRight infinite;
   }
   
+  /* Info and Links Styling */
   .track-info {
     display: inline-block;
     vertical-align: top;
@@ -109,38 +110,39 @@
     background-color: #C35D7C;
   }
 
-    @keyframes flapLeft {
+  /* Flying Animations */
+  @keyframes flapLeft {
 
-        28% {
-            rotate: -10deg;
-            top: 195px;
-        }
+      28% {
+          rotate: -10deg;
+          top: 195px;
+      }
 
-    }
+  }
 
-    @keyframes flapRight {
+  @keyframes flapRight {
 
-        28% {
-            rotate: 10deg;
-            top: 99px;
-        }
+      28% {
+          rotate: 10deg;
+          top: 99px;
+      }
 
-    }
+  }
 
-    @keyframes fly {
+  @keyframes fly {
 
-        0% {
-            top: 0px;
-        }
+      0% {
+          top: 0px;
+      }
 
-        40% {
-            top: -15px;
-        }
+      40% {
+          top: -15px;
+      }
 
-        100% {
-            top: 0px;
-        }
+      100% {
+          top: 0px;
+      }
 
-    }
+  }
 
 </style>

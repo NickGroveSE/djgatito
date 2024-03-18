@@ -2,8 +2,10 @@
   import Track from "../components/Track.vue"
   import { reactive } from 'vue';
   
+  // Reactive Position for Tracks and Indicator
   let trackState = reactive({position: 0})
 
+  // Hardcoded Track Objects
   const tracks = [
     {
       title: "Easy (Remix)",
@@ -27,7 +29,7 @@
     },
     {
       title: "On my way! 2 Bäreneck",
-      genres: "TBD",
+      genres: "Electropop / House",
       arturl: "https://i1.sndcdn.com/artworks-8xd6tp4lck6Ll3fB-gDDPJA-t500x500.jpg",
       links: {
         "soundcloud":"https://soundcloud.com/dj-bbflan/on-my-way-2-bareneck",
@@ -36,15 +38,15 @@
     }
 
   ]
-
+  
+  // Array for indicating which track is being shown in the Carousel
   let indicator = [" indicated", "", ""]
 
-  function handleChange(index) {
+  function handleCarouselClick(index) {
     indicator[trackState.position] = ""
     indicator[index] = " indicated"
+
     trackState.position = index
-    const arr = Array.from(tracks[1].links)
-    console.log(arr)
   }
 
 </script>
@@ -61,11 +63,12 @@
       />
       <div id="carousel-wrapper">
         <div id="carousel-nav" :style="`width: calc(${tracks.length} * 90px + 30px)`">
+          <!-- Carousel Buttons -->
           <div
             v-for="(track, index) in tracks"
             :class="`carousel-nav-item${indicator[index]}`"
             :style="`background-image: url(${track.arturl})`"
-            @click="handleChange(index)"
+            @click="handleCarouselClick(index)"
           ></div>
         </div>
       </div>
@@ -98,6 +101,7 @@
     margin-top: calc(50vh - 375px);
   }
 
+  /* Track Styling */
   .track-panel {
     display: inline-block;
     width: 70%;
@@ -110,6 +114,7 @@
     transition: 0.8s;
   }
 
+  /* Carousel Styling */
   #carousel-wrapper {
     position: relative;
     width: 100%; 
@@ -119,9 +124,8 @@
 
   #carousel-nav {
     height: 70px;
-    margin: 30px auto 0 auto;
+    margin: 50px auto 0 auto;
   }
-
 
   .carousel-nav-item {
     width: 70px;
@@ -137,21 +141,15 @@
     transition: 0.8s;
   }
 
+  .carousel-nav-item:hover {
+    border: 10px solid rgba(255,254,230, 0.5);
+  }
+
   .indicated {
     border: 10px solid rgba(255,254,230, 0.2);
   }
 
-  #soundcloud {
-    background-image: url("soundcloud.svg");
-    background-size: cover;
-  }
-
-  #youtube {
-    background-image: url("youtube.svg");
-    background-size: 70px 70px;
-    background-repeat: no-repeat;
-  }
-
+  /* Bio Styling */
   .bio-panel {
     margin-left: 50px;
     width: 16%;
@@ -190,7 +188,6 @@
     color: var(--accent-color);
   }
 
-
   .social-link-item {
     width: 70px;
     height: 70px;
@@ -200,12 +197,11 @@
     border-radius: 15px;
   }
 
-  
-
   .social-link-item:hover {
     filter: drop-shadow(10px 10px 4px rgba(0,0,0,0.2));
   }
 
+  /* Footer Styling */
   footer {
     font-size: 18px;
     color: var(--accent-color);
@@ -224,7 +220,7 @@
     font-weight: 900;
   }
 
-
+  /* Possible Shine Animation */
   /* .button-shine {
     position: relative;
     top: 0;
