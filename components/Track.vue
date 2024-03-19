@@ -79,6 +79,7 @@
     font-weight: 700;
     font-size: 60px;
     margin-bottom: 10px;
+    letter-spacing: 0.05px;
   }
 
   .track-tags {
@@ -151,14 +152,20 @@
       height: 400px;
     }
 
+    .wing {
+      width: calc(140px * (8 / 9));
+      height: calc(98px * (8 / 9));
+    }
+    
+
     #left-wing {
-      top: 160px;
+      top: 165px;
       animation: 1.5s flapLeft1655 infinite;
     }
 
     #right-wing {
       left: 364px;
-      top: 64px;
+      top: calc(69px + (98px - 98px * (8 / 9)));
       animation: 1.5s flapRight1655 infinite;
     }
 
@@ -167,7 +174,7 @@
     }
 
     .track-name {
-      font-size: 50px;
+      font-size: 45px;
     }
 
     .track-tags {
@@ -183,7 +190,7 @@
 
       28% {
           rotate: -10deg;
-          top: 165px;
+          top: 170px;
       }
 
     }
@@ -192,11 +199,33 @@
 
       28% {
           rotate: 10deg;
-          top: 69px;
+          top: calc(74px + (98px - 98px * (8 / 9)));
       }
 
     }
 
   }
+
+  @media (max-width: 1460px) {
+
+    .track-art {
+      margin-left: 150px;
+    }
+
+    .track-name {
+      font-size: 40px;
+    }
+
+    .track-tags {
+      font-size: 18px;
+    }
+
+    .track-link-item {
+      width: 60px;
+      height: 60px;
+    }
+
+  }
+
 
 </style>

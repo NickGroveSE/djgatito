@@ -190,9 +190,9 @@
   }
 
   #bio {
-    width: 220px;
+    width: 80%;
     height: 80px;
-    margin: 20px auto 0 auto;
+    margin: 20px 0 0 10%;
     font-size: 16px;
     color: var(--accent-color);
   }
@@ -234,6 +234,20 @@
     color: 	#7816b1;
     font-weight: 900;
   }
+
+  @media (max-width: 1655px) {
+    #carousel-nav {
+      margin-top: 80px;
+    }
+  }
+  
+  @media (max-width: 1460px) {
+    #bio-panel {
+      margin-left: 50px;
+    }
+  }
+
+  
 
 
   /* Possible Shine Animation */
