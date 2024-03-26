@@ -242,9 +242,40 @@
   }
   
   @media (max-width: 1460px) {
-    #bio-panel {
-      margin-left: 50px;
+
+    .track-panel {
+      height: 100%;
     }
+
+    .bio-panel {
+      margin-left: 50px;
+      height: 675px;
+      width: 20%;
+    }
+
+    /* #links {
+      width: 250px;
+      margin-top: 40px;
+    }
+
+    .social-link-item {
+      width: 60px;
+      height: 60px;
+    } */
+
+    .content-wrapper{
+      height: calc(100vh - 30px);
+      margin-top: 25px;
+    }
+
+    #carousel-nav {
+      margin-top: 0;
+    }
+
+    /* footer {
+      display: none;
+      visibility: hidden;
+    } */
   }
 
   

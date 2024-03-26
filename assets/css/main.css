@@ -94,3 +94,10 @@ body::-webkit-scrollbar {
   background-color: var(--bandcamp);
 }
 
+@media (max-width: 1460px) {
+  body{
+    height: calc(100vh - 25px);
+    margin: 0;
+  }
+}
+

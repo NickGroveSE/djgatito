@@ -212,6 +212,11 @@
       margin-left: 150px;
     }
 
+    .track-info {
+      padding-top: 20px;
+      width: 50%;
+    }
+
     .track-name {
       font-size: 40px;
     }
@@ -223,6 +228,10 @@
     .track-link-item {
       width: 60px;
       height: 60px;
+    }
+
+    .track-links {
+      margin-top: 20px;
     }
 
   }
