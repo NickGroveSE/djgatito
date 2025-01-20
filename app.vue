@@ -106,7 +106,6 @@
     </div>
     
     <div class="bio-panel">
-      <svg id="logo"></svg>
       <div id="bio">Hi! I'm DJ BB Flan</div>
       <div id="links">
         <a class="social-link-item" id="email-link" href="yum@djbbflan.com"></a>
@@ -130,6 +129,12 @@
     margin-left: auto;
     margin-top: calc(50vh - 375px);
   }
+  
+  #nav-bar{
+    width: 100%;
+    height: 100px;
+    background-color: rgba(255, 254, 230, 0.2);
+  }
 
   /* Track Styling */
   .track-panel {
@@ -147,9 +152,8 @@
   /* Carousel Styling */
   #carousel-wrapper {
     position: relative;
-    width: 100%; 
     height: 100%;
-    margin: 20px 0 0 125px;
+    margin: 20px auto 0 auto;
   }
 
   #carousel-nav {

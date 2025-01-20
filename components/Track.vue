@@ -30,7 +30,7 @@
   .track-art {
     display: inline-block;
     position: relative;
-    margin: 50px 0 0 200px;
+    margin: 50px 0 0 250px;
     width: 450px; 
     height: 450px;
     border-radius: 10px;
