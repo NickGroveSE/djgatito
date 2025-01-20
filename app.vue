@@ -3,47 +3,57 @@
   import { reactive, onMounted } from 'vue';
   
   // Reactive Position for Tracks and Indicator
-  let trackState = reactive({position: 0})
+  let trackState = reactive({position: 0, timer: null})
 
   // Hardcoded Track Objects
   const tracks = [
     {
-      title: "Easy (Remix)",
-      genres: "K-Pop / Club",
-      arturl: "https://i1.sndcdn.com/artworks-zO6C1vbyLJZ9K4nk-zXvPUQ-t500x500.jpg",
+      title: "EMBER",
+      genres: "Melodic House / Trance",
+      arturl: "https://i1.sndcdn.com/artworks-kbvMCr2xhjyQpfyK-gNwm4A-t500x500.jpg",
       links: {
-        "soundcloud":"https://soundcloud.com/dj-bbflan/easy-le-sserafim-club-remix",
-        "youtube":"https://www.youtube.com/watch?v=ZKgt-JDbnHk",
-        "bandcamp":"https://djbbflan.bandcamp.com/track/ez"
+        "soundcloud":"https://soundcloud.com/gatitoxoxo/ember"
       }
     },
     {
-      title: "Bijoux Mix",
-      genres: "Hyperpop / Club",
-      arturl: "https://i1.sndcdn.com/artworks-aWYsfzNUWCCNZTNw-zPe9lQ-t500x500.jpg",
+      title: "Winter Solstice",
+      genres: "Hardstyle / Guaracha / Tribal",
+      arturl: "https://i1.sndcdn.com/artworks-qBHfzjMu9Ep9pW9H-ZOxnVA-t500x500.jpg",
       links: {
-        "soundcloud":"https://soundcloud.com/dj-bbflan/bijoux-mix",
-        "youtube":"https://www.youtube.com/watch?v=MOQvQiBtIf0",
-        "bandcamp":"https://djbbflan.bandcamp.com/track/bijoux-mix"
+        "soundcloud":"https://soundcloud.com/gatitoxoxo/winter-solstice"
       }
     },
     {
-      title: "On my way! 2 Bäreneck",
-      genres: "Electropop / House",
-      arturl: "https://i1.sndcdn.com/artworks-8xd6tp4lck6Ll3fB-gDDPJA-t500x500.jpg",
+      title: "Diciembre Guarachoso",
+      genres: "Guaracha / Tribal",
+      arturl: "https://i1.sndcdn.com/artworks-kXQ29YKL9Ocs8zNc-idlo1g-t500x500.jpg",
       links: {
-        "soundcloud":"https://soundcloud.com/dj-bbflan/on-my-way-2-bareneck",
-        "bandcamp":"https://djbbflan.bandcamp.com/track/on-my-way-2-b-reneck"
+        "soundcloud":"https://soundcloud.com/gatitoxoxo/diciembre-guarachoso"
       }
-    }
-
+    },
+    {
+      title: "Melt",
+      genres: "G-Tech",
+      arturl: "https://i1.sndcdn.com/artworks-S7L4hBBDPyWId487-ZmwNUQ-t500x500.jpg",
+      links: {
+        "soundcloud":"https://soundcloud.com/gatitoxoxo/melt-1"
+      }
+    },
+    {
+      title: "Verano Tribalero",
+      genres: "Guaracha / Tribal",
+      arturl: "https://i1.sndcdn.com/artworks-GzTy83Cdy8rdUFB9-QYWiqQ-t500x500.jpg",
+      links: {
+        "soundcloud":"https://soundcloud.com/gatitoxoxo/verano-tribalero"
+      }
+    },
   ]
   
   // Array for indicating which track is being shown in the Carousel
-  let indicator = [" indicated", "", ""]
+  let indicator = [" indicated", "", "", "", ""]
 
   onMounted(() => {
-    setInterval(advancedCarousel, 60000)
+    trackState.timer = setInterval(advancedCarousel, 60000)
   })
 
   function handleCarouselClick(index) {
@@ -55,10 +65,14 @@
 
   function advancedCarousel() {
     if (tracks.length - 1 <= trackState.position) {
+      clearInteral(trackState.timer)
+      trackState.timer = setInterval(advancedCarousel, 60000)
       indicator[trackState.position] = ""
       trackState.position = 0
       indicator[trackState.position] = " indicated"
     } else {
+      clearInteral(trackState.timer)
+      trackState.timer = setInterval(advancedCarousel, 60000)
       indicator[trackState.position] = ""
       trackState.position = trackState.position + 1
       indicator[trackState.position] = " indicated"
@@ -78,7 +92,7 @@
         :links="tracks[trackState.position].links"
       />
       <div id="carousel-wrapper">
-        <div id="carousel-nav" :style="`width: calc(${tracks.length} * 90px + 30px)`">
+        <div id="carousel-nav" :style="`width: calc(${tracks.length} * 100px)`">
           <!-- Carousel Buttons -->
           <div
             v-for="(track, index) in tracks"
@@ -264,18 +278,18 @@
     } */
 
     .content-wrapper{
-      height: calc(100vh - 30px);
-      margin-top: 25px;
+      height: 90vh;
+      margin-top: 50px;
     }
 
     #carousel-nav {
       margin-top: 0;
     }
 
-    /* footer {
+    footer {
       display: none;
       visibility: hidden;
-    } */
+    }
   }
 
   
