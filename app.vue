@@ -117,7 +117,7 @@
       </div>
     </div>
   </div>
-  <footer>created by <a class="footer-element" href="https://nickgrove.netlify.app/">Nick Grove</a> powered by <a class="footer-element" href="https://nuxt.com/">Nuxt.js</a></footer>
+  <footer><span id="footer-text">created by <a class="footer-link" href="https://nickgrove.netlify.app/">Nick Grove</a> powered by <a class="footer-link" href="https://nuxt.com/">Nuxt.js</a></span></footer>
 </template>
 
 <style scoped>
@@ -185,7 +185,7 @@
 
   /* Bio Styling */
   .bio-panel {
-    margin-left: 100px;
+
     width: 16%;
     height: 100%;
     display: inline-block;
@@ -217,14 +217,12 @@
 
   #links {
     width: 220px;
-    margin: 20px auto 20px auto;
     color: var(--accent-color);
   }
 
   .social-link-item {
     width: 70px;
     height: 70px;
-    margin: 20px;
     display: inline-block;
     transition: 0.8s;
     border-radius: 15px;
@@ -240,15 +238,22 @@
     color: var(--accent-color);
     vertical-align: bottom;
     text-align: center;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+    position: relative;
+    width: 400px;
+    margin: 0 auto 0 auto;
     height: 100px;
     line-height: 100%;
   }
 
-  .footer-element {
+  #footer-text {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    text-align: center;
+  }
+
+  .footer-link {
     color: 	#7816b1;
     font-weight: 900;
   }
