@@ -5,6 +5,9 @@
   // Reactive Position for Tracks and Indicator
   let trackState = reactive({position: 0, timer: null})
 
+  // Menu state for mobile
+  const isMenuOpen = ref(false)
+
   // Hardcoded Track Objects
   const tracks = [
     {
@@ -79,9 +82,33 @@
     }
   }
 
+  function toggleMenu() {
+    isMenuOpen.value = !isMenuOpen.value
+  }
+
+  function closeMenu() {
+    isMenuOpen.value = false
+  }
+
 </script>
 
 <template>
+
+  <!-- Hamburger Button (mobile only) -->
+  <button class="hamburger-btn" @click="toggleMenu" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Overlay (when menu is open) -->
+  <div 
+    class="menu-overlay" 
+    :class="{ 'active': isMenuOpen }"
+    @click="closeMenu"
+  ></div>
+
+  <div id="page-wrapper">
   <div class="content-wrapper">
     <div class="track-panel">
       <Track 
@@ -105,22 +132,29 @@
       
     </div>
     
-    <div class="bio-panel">
-      <div id="bio">Hi! I'm DJ BB Flan</div>
-      <div id="links">
-        <a class="social-link-item" id="email-link" href="yum@djbbflan.com"></a>
-        <a class="social-link-item" id="insta-social" href="https://www.instagram.com/djbbflan/"></a>
-        <a class="social-link-item" id="soundcloud-social" href="https://soundcloud.com/dj-bbflan"></a>
-        <a class="social-link-item" id="bandcamp-social" href="https://djbbflan.bandcamp.com/music"></a>
-        <a class="social-link-item" id="tiktok-social" href="https://www.tiktok.com/@djbbflan"></a>
-        <a class="social-link-item" id="youtube-social" href="https://www.youtube.com/@DJbbFlan"></a>
+      <div id="links" :class="{ 'menu-open': isMenuOpen }">
+        <button class="close-btn" @click="closeMenu" aria-label="Close menu">×</button>
+        <div id="link-grid">
+          <a class="social-link-item" id="email-link" href="/"></a>
+          <a class="social-link-item" id="insta-social" href="https://www.instagram.com/djbbflan/"></a>
+          <a class="social-link-item" id="soundcloud-social" href="https://soundcloud.com/dj-bbflan"></a>
+          <a class="social-link-item" id="bandcamp-social" href="https://djbbflan.bandcamp.com/music"></a>
+          <a class="social-link-item" id="tiktok-social" href="https://www.tiktok.com/@djbbflan"></a>
+          <a class="social-link-item" id="youtube-social" href="https://www.youtube.com/@DJbbFlan"></a>
+        </div>
       </div>
     </div>
-  </div>
+
   <footer><span id="footer-text">created by <a class="footer-link" href="https://nickgrove.netlify.app/">Nick Grove</a> powered by <a class="footer-link" href="https://nuxt.com/">Nuxt.js</a></span></footer>
+  </div>
 </template>
 
 <style scoped>
+
+  /* #page-wrapper {
+    width: calc(100vw - 15px);
+    height: 100vh;
+  } */
 
   .content-wrapper {
     width: 100%;
@@ -129,19 +163,93 @@
     margin-left: auto;
     margin-top: calc(50vh - 375px);
   }
+
+  /* Hamburger Button */
+  .hamburger-btn {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 254, 230, 0.3);
+    border: none;
+    border-radius: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .hamburger-btn:hover {
+    background: rgba(255, 254, 230, 0.5);
+  }
+
+  .hamburger-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  /* Menu Overlay */
+  .menu-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Close Button (inside menu) */
+  .close-btn {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 254, 230, 0.3);
+    border: none;
+    border-radius: 10px;
+    color: var(--accent-color);
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .close-btn:hover {
+    background: rgba(255, 254, 230, 0.5);
+  }
   
-  #nav-bar{
+  /* #nav-bar{
     width: 100%;
     height: 100px;
     background-color: rgba(255, 254, 230, 0.2);
-  }
+  } */
 
   /* Track Styling */
   .track-panel {
     display: inline-block;
-    width: 70%;
+    width: 75%;
     height: 675px;
-    overflow: hidden;
   }
 
   .track {
@@ -183,18 +291,9 @@
     border: 10px solid rgba(255,254,230, 0.2);
   }
 
-  /* Bio Styling */
-  .bio-panel {
 
-    width: 16%;
-    height: 100%;
-    display: inline-block;
-    vertical-align: top;
-    background-color: rgba(255, 254, 230, 0.2);
-    border-radius: 10px;
-  }
   
-  #logo {
+  /* #logo {
     display: block;
     position: relative;
     width: 187px;
@@ -205,19 +304,19 @@
     margin: 40px auto 0 auto;
     left: -5px;
     border-radius: 10px;
-  }
-
-  #bio {
-    width: 80%;
-    height: 80px;
-    margin: 20px 0 0 10%;
-    font-size: 16px;
-    color: var(--accent-color);
-  }
+  } */
 
   #links {
-    width: 220px;
-    color: var(--accent-color);
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 50px;
+  }
+  
+  #link-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .social-link-item {
@@ -236,12 +335,12 @@
   footer {
     font-size: 18px;
     color: var(--accent-color);
-    vertical-align: bottom;
+    vertical-align: top;
     text-align: center;
     position: relative;
     width: 400px;
     margin: 0 auto 0 auto;
-    height: 100px;
+    height: 50px;
     line-height: 100%;
   }
 
@@ -258,33 +357,21 @@
     font-weight: 900;
   }
 
-  @media (max-width: 1655px) {
+  /* @media (max-width: 1755px) {
     #carousel-nav {
       margin-top: 80px;
     }
-  }
+  } */
   
   @media (max-width: 1460px) {
-
     .track-panel {
-      height: 100%;
+      width: 80%;
     }
 
-    .bio-panel {
+    #links {
       margin-left: 50px;
       height: 675px;
-      width: 20%;
     }
-
-    /* #links {
-      width: 250px;
-      margin-top: 40px;
-    }
-
-    .social-link-item {
-      width: 60px;
-      height: 60px;
-    } */
 
     .content-wrapper{
       height: 90vh;
@@ -301,6 +388,130 @@
     }
   }
 
+  /* Tablet and Mobile - Hamburger Menu */
+  @media (max-width: 1200px) {
+    .hamburger-btn {
+      display: flex;
+    }
+
+    .menu-overlay {
+      display: block;
+    }
+
+    .close-btn {
+      display: block;
+    }
+
+    .content-wrapper {
+      margin-top: 20px;
+      height: auto;
+      min-height: 100vh;
+    }
+
+    /* Track panel takes full width */
+    .track-panel {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Bio panel becomes slide-out menu */
+    #links {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: rgba(195, 93, 124, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+      margin: 0;
+      padding: 80px 20px 20px 20px;
+    }
+
+    #links.menu-open {
+      right: 0;
+    }
+
+    #link-grid {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      justify-items: center;
+    }
+
+    .social-link-item {
+      width: 60px;
+      height: 60px;
+    }
+
+    footer {
+      display: block;
+      visibility: visible;
+      margin-top: 40px;
+      position: relative;
+    }
+  }
+
+  /* Small mobile adjustments */
+  @media (max-width: 480px) {
+    .hamburger-btn {
+      width: 45px;
+      height: 45px;
+      top: 15px;
+      right: 15px;
+    }
+
+    #links {
+      width: 250px;
+    }
+
+    #link-grid {
+      gap: 12px;
+    }
+
+    .social-link-item {
+      width: 55px;
+      height: 55px;
+    }
+
+    #carousel-nav {
+      margin-top: 30px;
+    }
+
+    .carousel-nav-item {
+      width: 60px;
+      height: 60px;
+      margin-right: 8px;
+      border-width: 8px;
+    }
+
+    footer {
+      width: 90%;
+      font-size: 14px;
+    }
+  }
+
+  /* Extra small devices */
+  @media (max-width: 320px) {
+    #links {
+      width: 220px;
+    }
+
+    .social-link-item {
+      width: 50px;
+      height: 50px;
+    }
+
+    .carousel-nav-item {
+      width: 50px;
+      height: 50px;
+      margin-right: 6px;
+      border-width: 6px;
+    }
+  }
   
 
 
@@ -341,5 +552,6 @@
     }
     
   } */
+
 
 </style>

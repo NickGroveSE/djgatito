@@ -68,7 +68,7 @@
   .track-info {
     display: inline-block;
     vertical-align: top;
-    padding: 100px 0 0 150px;
+    margin: 100px 0 0 150px;
     /* margin: 100px 0 0 0; */
     width: 30%;
     color: var(--accent-color);
@@ -89,7 +89,7 @@
   }
 
   .track-links {
-    margin: 50px 0 0 0;
+    margin: 30px 0 0 0;
     width: 100%;
     height: 80px;
   }
@@ -145,7 +145,7 @@
   }
 
   /* Media Queries for Responsiveness */
-  @media (max-width: 1655px) {
+  @media (max-width: 1755px) {
 
     .track-art {
       width: 400px;
@@ -212,22 +212,14 @@
       margin-left: 150px;
     }
 
+
     .track-info {
       padding-top: 20px;
-      width: 50%;
-    }
-
-    .track-name {
-      font-size: 40px;
-    }
-
-    .track-tags {
-      font-size: 18px;
     }
 
     .track-link-item {
-      width: 60px;
-      height: 60px;
+      width: 70px;
+      height: 70px;
     }
 
     .track-links {
@@ -235,6 +227,185 @@
     }
 
   }
+  
+  /* Tablet and Mobile (< 768px) */
+  @media (max-width: 1050px) {
+    .track-art {
+      margin: 30px auto 0 auto;
+      width: 320px;
+      height: 320px;
+      display: block;
+    }
 
+    .wing {
+      width: calc(140px * 0.6);
+      height: calc(98px * 0.6);
+    }
+
+    #left-wing {
+      top: 132px;
+      left: -62px;
+      animation: 1.5s flapLeft767 infinite;
+    }
+
+    #right-wing {
+      left: 304px;
+      top: calc(38px + (98px - 98px * 0.6));
+      animation: 1.5s flapRight767 infinite;
+    }
+
+    .track-info {
+      display: block;
+      width: 90%;
+      margin: 30px auto 0 auto;
+      padding: 0;
+      text-align: center;
+    }
+
+    .track-name {
+      font-size: 36px;
+    }
+
+    .track-tags {
+      font-size: 18px;
+    }
+
+    .track-links {
+      margin: 30px auto 0 auto;
+      height: auto;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .track-link-item {
+      width: 60px;
+      height: 60px;
+      margin-right: 0;
+    }
+
+    @keyframes flapLeft767 {
+      28% {
+          rotate: -10deg;
+          top: 135px;
+      }
+    }
+
+    @keyframes flapRight767 {
+      28% {
+          rotate: 10deg;
+          top: calc(41px + (98px - 98px * 0.6));
+      }
+    }
+  }
+
+  /* Small Mobile (< 480px) */
+  @media (max-width: 480px) {
+    .track-art {
+      width: 280px;
+      height: 280px;
+      margin-top: 20px;
+    }
+
+    .wing {
+      width: calc(140px * 0.5);
+      height: calc(98px * 0.5);
+    }
+
+    #left-wing {
+      top: 116px;
+      left: -52px;
+      animation: 1.5s flapLeft480 infinite;
+    }
+
+    #right-wing {
+      left: 262px;
+      top: calc(67px + (98px - 98px * 0.5));
+      animation: 1.5s flapRight480 infinite;
+    }
+
+    .track-name {
+      font-size: 32px;
+    }
+
+    .track-tags {
+      font-size: 16px;
+    }
+
+    .track-link-item {
+      width: 55px;
+      height: 55px;
+    }
+
+    .track-links {
+      gap: 12px;
+    }
+
+    @keyframes flapLeft480 {
+      28% {
+          rotate: -10deg;
+          top: 119px;
+      }
+    }
+
+    @keyframes flapRight480 {
+      28% {
+          rotate: 10deg;
+          top: calc(70px + (98px - 98px * 0.5));
+      }
+    }
+  }
+
+  /* Extra Small Mobile (< 360px) */
+  @media (max-width: 360px) {
+    .track-art {
+      width: 240px;
+      height: 240px;
+    }
+
+    .wing {
+      width: calc(140px * 0.45);
+      height: calc(98px * 0.45);
+    }
+
+    #left-wing {
+      top: 99px;
+      left: -47px;
+      animation: 1.5s flapLeft360 infinite;
+    }
+
+    #right-wing {
+      left: 224px;
+      top: calc(55px + (98px - 98px * 0.45));
+      animation: 1.5s flapRight360 infinite;
+    }
+
+    .track-name {
+      font-size: 28px;
+    }
+
+    .track-tags {
+      font-size: 14px;
+    }
+
+    .track-link-item {
+      width: 50px;
+      height: 50px;
+    }
+
+    @keyframes flapLeft360 {
+      28% {
+          rotate: -10deg;
+          top: 102px;
+      }
+    }
+
+    @keyframes flapRight360 {
+      28% {
+          rotate: 10deg;
+          top: calc(58px + (98px - 98px * 0.45));
+      }
+    }
+  }
 
 </style>
