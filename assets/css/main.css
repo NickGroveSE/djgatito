@@ -26,6 +26,8 @@ html {
 
   display: flex;
   align-items: center;
+
+  overflow: hidden;
 }
 
 /* Metallic Background and Initialize Styling of the Body */
@@ -101,6 +103,9 @@ body::-webkit-scrollbar {
   background-color: var(--bandcamp);
 }
 
-@media (max-width: 1460px) {
+@media (max-height: 675px) {
+  html {
+    height: max-content;
+  }
 
 }

@@ -141,6 +141,7 @@
           <a class="social-link-item" title="tiktok" id="tiktok-social" href="https://www.tiktok.com/@gatitoxoxoxo?_r=1&_t=ZT-91SM0gMiIXn"></a>
           <a class="social-link-item" title="youtube" id="youtube-social" href="https://youtube.com/@gatitoxoxo?si=YfROh7c_Ub3e0ANg"></a>
         </div>
+        <!-- <div id="sidebar-footer" :class="{'menu-open': isMenuOpen}">created by <a class="footer-link" href="https://nickgrove.netlify.app/">Nick Grove</a> powered by <a class="footer-link" href="https://nuxt.com/">Nuxt.js</a></div> -->
       </div>
     </div>
 
@@ -150,9 +151,25 @@
 
 <style scoped>
 
-  #page-wrapper {
-    height: 100%;
+  /* #page-wrapper {
+    
+  } */
+
+  /* #sidebar-footer {
+    display: none;
+    visibility: hidden;
+    width: 200px;
+    height: 50px;
+    margin: 50px auto 0 auto;
+    font-size: 18px;
+    color: var(--accent-color);
+    text-align: center;
   }
+
+  #sidebar-footer.menu-open {
+    display: block;
+    visibility: visible;
+  } */
 
   .content-wrapper {
     width: 100%;
@@ -229,34 +246,6 @@
     pointer-events: auto;
   }
 
-  /* Close Button (inside menu) */
-  /* .close-btn {
-    display: none;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 254, 230, 0.3);
-    border: none;
-    border-radius: 10px;
-    color: var(--accent-color);
-    font-size: 30px;
-    line-height: 1;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  .close-btn:hover {
-    background: rgba(255, 254, 230, 0.5);
-  }
-   */
-  /* #nav-bar{
-    width: 100%;
-    height: 100px;
-    background-color: rgba(255, 254, 230, 0.2);
-  } */
-
   /* Track Styling */
   .track-panel {
     display: inline-block;
@@ -300,21 +289,6 @@
   .indicated {
     border: 10px solid rgba(255,254,230, 0.2);
   }
-
-
-  
-  /* #logo {
-    display: block;
-    position: relative;
-    width: 187px;
-    height: 151px;
-    background-image: url("bbflanfinal.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: 40px auto 0 auto;
-    left: -5px;
-    border-radius: 10px;
-  } */
 
   #links {
     display: inline-block;
@@ -366,11 +340,6 @@
     font-weight: 900;
   }
 
-  /* @media (max-width: 1755px) {
-    #carousel-nav {
-      margin-top: 80px;
-    }
-  } */
   
   @media (max-width: 1460px) {
     .track-panel {
