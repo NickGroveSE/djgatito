@@ -9,7 +9,8 @@
 }
 
 html {
-  padding: 0 0 105px 0;
+  /* padding: 0 0 105px 0; */
+  height: 100%;
   background: linear-gradient(
   60deg,
   #C35D7C 5%,
@@ -22,6 +23,9 @@ html {
   );
   background-repeat: no-repeat;
   background-size: cover;
+
+  display: flex;
+  align-items: center;
 }
 
 /* Metallic Background and Initialize Styling of the Body */
@@ -29,14 +33,10 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
     border: none;
     outline: none;
-
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-
-
     -ms-overflow-style: none; 
     scrollbar-width: none; 
 }

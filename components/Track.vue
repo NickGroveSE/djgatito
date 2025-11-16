@@ -17,9 +17,9 @@
       <div class="track-tags">{{ genres }}</div>
       <div class="track-links">
         <!-- If Declarative Syntax for to check if link is inside the links Map -->
-        <a v-if="links.soundcloud" class="track-link-item" id="soundcloud-social" :href="links.soundcloud"></a>
-        <a v-if="links.youtube" class="track-link-item" id="youtube-social" :href="links.youtube"></a>
-        <a v-if="links.bandcamp" class="track-link-item" id="bandcamp-social" :href="links.bandcamp"></a>
+        <a v-if="links.soundcloud" :title="title + ` soundcloud`" class="track-link-item" id="soundcloud-social" :href="links.soundcloud"></a>
+        <a v-if="links.youtube" :title="title + ` youtube`" class="track-link-item" id="youtube-social" :href="links.youtube"></a>
+        <a v-if="links.bandcamp" :title="title + ` bandcamp`" class="track-link-item" id="bandcamp-social" :href="links.bandcamp"></a>
       </div>
     </div>
 </template>
@@ -58,7 +58,7 @@
   }
 
   #right-wing {
-    top: 94px;
+    top: 95px;
     left: 414px;
     background-image: url("right-wing-large.svg");
     animation: 1.5s flapRight infinite;
@@ -123,7 +123,7 @@
 
       28% {
           rotate: 10deg;
-          top: 99px;
+          top: 100px;
       }
 
   }
@@ -160,12 +160,13 @@
 
     #left-wing {
       top: 165px;
+      left: calc(-104px + 140px * (1 / 9));
       animation: 1.5s flapLeft1655 infinite;
     }
 
     #right-wing {
       left: 364px;
-      top: calc(69px + (98px - 98px * (8 / 9)));
+      top: calc(70px + (98px * (1 / 9)));
       animation: 1.5s flapRight1655 infinite;
     }
 
@@ -199,7 +200,7 @@
 
       28% {
           rotate: 10deg;
-          top: calc(74px + (98px - 98px * (8 / 9)));
+          top: calc(75px + (98px * (1 / 9)));
       }
 
     }
@@ -244,13 +245,13 @@
 
     #left-wing {
       top: 132px;
-      left: -62px;
+      left: calc(-114px + 140px * (0.4));
       animation: 1.5s flapLeft767 infinite;
     }
 
     #right-wing {
-      left: 304px;
-      top: calc(38px + (98px - 98px * 0.6));
+      left: 294px;
+      top: calc(35px + (98px * 0.4));
       animation: 1.5s flapRight767 infinite;
     }
 
@@ -294,7 +295,7 @@
     @keyframes flapRight767 {
       28% {
           rotate: 10deg;
-          top: calc(41px + (98px - 98px * 0.6));
+          top: calc(38px + (98px - 98px * 0.6));
       }
     }
   }
@@ -313,14 +314,14 @@
     }
 
     #left-wing {
-      top: 116px;
-      left: -52px;
+      top: 115px;
+      left: calc(-114px + 140px * (0.5));
       animation: 1.5s flapLeft480 infinite;
     }
 
     #right-wing {
-      left: 262px;
-      top: calc(67px + (98px - 98px * 0.5));
+      left: 254px;
+      top: calc(20px + (98px * 0.5));
       animation: 1.5s flapRight480 infinite;
     }
 
@@ -351,7 +352,7 @@
     @keyframes flapRight480 {
       28% {
           rotate: 10deg;
-          top: calc(70px + (98px - 98px * 0.5));
+          top: calc(23px + (98px - 98px * 0.5));
       }
     }
   }
@@ -369,14 +370,14 @@
     }
 
     #left-wing {
-      top: 99px;
-      left: -47px;
+      top: 100px;
+      left: calc(-124px + 140px * (0.55));
       animation: 1.5s flapLeft360 infinite;
     }
 
     #right-wing {
       left: 224px;
-      top: calc(55px + (98px - 98px * 0.45));
+      top: calc(5px + (98px * 0.55));
       animation: 1.5s flapRight360 infinite;
     }
 
@@ -403,7 +404,7 @@
     @keyframes flapRight360 {
       28% {
           rotate: 10deg;
-          top: calc(58px + (98px - 98px * 0.45));
+          top: calc(8px + (98px - 98px * 0.45));
       }
     }
   }

@@ -95,7 +95,7 @@
 <template>
 
   <!-- Hamburger Button (mobile only) -->
-  <button class="hamburger-btn" @click="toggleMenu" aria-label="Menu">
+  <button class="hamburger-btn" :class="{ 'is-open': isMenuOpen }"  @click="toggleMenu" aria-label="Menu">
     <span></span>
     <span></span>
     <span></span>
@@ -119,7 +119,7 @@
         :links="tracks[trackState.position].links"
       />
       <div id="carousel-wrapper">
-        <div id="carousel-nav" :style="`width: calc(${tracks.length} * 100px)`">
+        <div id="carousel-nav">
           <!-- Carousel Buttons -->
           <div
             v-for="(track, index) in tracks"
@@ -133,14 +133,13 @@
     </div>
     
       <div id="links" :class="{ 'menu-open': isMenuOpen }">
-        <button class="close-btn" @click="closeMenu" aria-label="Close menu">×</button>
         <div id="link-grid">
-          <a class="social-link-item" id="email-link" href="/"></a>
-          <a class="social-link-item" id="insta-social" href="https://www.instagram.com/djbbflan/"></a>
-          <a class="social-link-item" id="soundcloud-social" href="https://soundcloud.com/dj-bbflan"></a>
-          <a class="social-link-item" id="bandcamp-social" href="https://djbbflan.bandcamp.com/music"></a>
-          <a class="social-link-item" id="tiktok-social" href="https://www.tiktok.com/@djbbflan"></a>
-          <a class="social-link-item" id="youtube-social" href="https://www.youtube.com/@DJbbFlan"></a>
+          <a class="social-link-item" title="email" id="email-link" href="/"></a>
+          <a class="social-link-item" title="instagram" id="insta-social" href="https://www.instagram.com/djbbflan/"></a>
+          <a class="social-link-item" title="soundcloud" id="soundcloud-social" href="https://soundcloud.com/gatitoxoxo"></a>
+          <a class="social-link-item" title="bandcamp" id="bandcamp-social" href="https://djbbflan.bandcamp.com/music"></a>
+          <a class="social-link-item" title="tiktok" id="tiktok-social" href="https://www.tiktok.com/@djbbflan"></a>
+          <a class="social-link-item" title="youtube" id="youtube-social" href="https://www.youtube.com/@DJbbFlan"></a>
         </div>
       </div>
     </div>
@@ -158,10 +157,9 @@
 
   .content-wrapper {
     width: 100%;
-    height: 675px;
     margin-right: auto;
     margin-left: auto;
-    margin-top: calc(50vh - 375px);
+    margin-top: 50px;
   }
 
   /* Hamburger Button */
@@ -197,6 +195,21 @@
     transition: 0.3s;
   }
 
+
+
+  /* Transform into X when active */
+  .hamburger-btn.is-open span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+
+  .hamburger-btn.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-btn.is-open span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
   /* Menu Overlay */
   .menu-overlay {
     display: none;
@@ -218,7 +231,7 @@
   }
 
   /* Close Button (inside menu) */
-  .close-btn {
+  /* .close-btn {
     display: none;
     position: absolute;
     top: 20px;
@@ -238,7 +251,7 @@
   .close-btn:hover {
     background: rgba(255, 254, 230, 0.5);
   }
-  
+   */
   /* #nav-bar{
     width: 100%;
     height: 100px;
@@ -249,7 +262,6 @@
   .track-panel {
     display: inline-block;
     width: 75%;
-    height: 675px;
   }
 
   .track {
@@ -260,19 +272,18 @@
   /* Carousel Styling */
   #carousel-wrapper {
     position: relative;
-    height: 100%;
     margin: 20px auto 0 auto;
   }
 
   #carousel-nav {
-    height: 70px;
     margin: 50px auto 0 auto;
+    width: calc(5 * 100px);
   }
 
   .carousel-nav-item {
     width: 70px;
     height: 70px;
-    margin-right: 10px;
+    margin: 0 5px 0 5px;
     display: inline-block;
     vertical-align: top;
     background-size: cover;
@@ -307,7 +318,6 @@
   } */
 
   #links {
-    height: 100%;
     display: inline-block;
     vertical-align: top;
     margin-top: 50px;
@@ -339,7 +349,7 @@
     text-align: center;
     position: relative;
     width: 400px;
-    margin: 0 auto 0 auto;
+    margin: 50px auto 0 auto;
     height: 50px;
     line-height: 100%;
   }
@@ -370,21 +380,10 @@
 
     #links {
       margin-left: 50px;
-      height: 675px;
-    }
-
-    .content-wrapper{
-      height: 90vh;
-      margin-top: 50px;
     }
 
     #carousel-nav {
       margin-top: 0;
-    }
-
-    footer {
-      display: none;
-      visibility: hidden;
     }
   }
 
@@ -404,8 +403,6 @@
 
     .content-wrapper {
       margin-top: 20px;
-      height: auto;
-      min-height: 100vh;
     }
 
     /* Track panel takes full width */
@@ -420,7 +417,6 @@
       top: 0;
       right: -100%;
       width: 280px;
-      height: 100vh;
       background: rgba(195, 93, 124, 0.95);
       backdrop-filter: blur(10px);
       z-index: 1000;
@@ -428,6 +424,7 @@
       overflow-y: auto;
       margin: 0;
       padding: 80px 20px 20px 20px;
+      height: 100%;
     }
 
     #links.menu-open {
@@ -438,21 +435,39 @@
       margin-top: 20px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 15px;
+      gap: 30px;
       justify-items: center;
     }
 
     .social-link-item {
-      width: 60px;
-      height: 60px;
+      width: 80px;
+      height: 80px;
     }
 
+
+
     footer {
-      display: block;
-      visibility: visible;
       margin-top: 40px;
       position: relative;
     }
+  }
+
+  @media (max-width: 1050px) {
+
+    #carousel-nav {
+      width: calc(5 * 85px)
+    }
+
+    .carousel-nav-item {
+      width: 55px;
+      height: 55px;
+    }
+
+    footer {
+      margin-top: 25px;
+      font-size: 16px;
+    }
+
   }
 
   /* Small mobile adjustments */
@@ -469,28 +484,50 @@
     }
 
     #link-grid {
-      gap: 12px;
+      gap: 20px;
     }
 
     .social-link-item {
-      width: 55px;
-      height: 55px;
+      width: 70px;
+      height: 70px;
     }
 
     #carousel-nav {
-      margin-top: 30px;
+      margin-top: 50px;
+      width: calc(5 * 74px);
     }
 
     .carousel-nav-item {
-      width: 60px;
-      height: 60px;
-      margin-right: 8px;
+      width: 50px;
+      height: 50px;
+      margin: 0 4px 0 4px;
       border-width: 8px;
     }
 
     footer {
-      width: 90%;
       font-size: 14px;
+      
+    }
+  }
+
+  @media (max-width: 400px) {
+
+    footer {
+      width: 100%;
+    }
+    
+  }
+
+  @media (max-width: 370px) {
+    #carousel-nav {
+      width: calc(5 * 58px);
+    }
+
+    .carousel-nav-item {
+      width: 40px;
+      height: 40px;
+      margin: 0 3px 0 3px;
+      border-width: 6px;
     }
   }
 
@@ -501,16 +538,10 @@
     }
 
     .social-link-item {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
     }
 
-    .carousel-nav-item {
-      width: 50px;
-      height: 50px;
-      margin-right: 6px;
-      border-width: 6px;
-    }
   }
   
 
