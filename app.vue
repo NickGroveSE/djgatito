@@ -135,11 +135,11 @@
       <div id="links" :class="{ 'menu-open': isMenuOpen }">
         <div id="link-grid">
           <a class="social-link-item" title="email" id="email-link" href="/"></a>
-          <a class="social-link-item" title="instagram" id="insta-social" href="https://www.instagram.com/djbbflan/"></a>
+          <a class="social-link-item" title="instagram" id="insta-social" href="https://www.instagram.com/gatitoxoxoxo?igsh=dmt2cmVkOWpiaTZo&utm_source=qr"></a>
           <a class="social-link-item" title="soundcloud" id="soundcloud-social" href="https://soundcloud.com/gatitoxoxo"></a>
-          <a class="social-link-item" title="bandcamp" id="bandcamp-social" href="https://djbbflan.bandcamp.com/music"></a>
-          <a class="social-link-item" title="tiktok" id="tiktok-social" href="https://www.tiktok.com/@djbbflan"></a>
-          <a class="social-link-item" title="youtube" id="youtube-social" href="https://www.youtube.com/@DJbbFlan"></a>
+          <a class="social-link-item" title="bandcamp" id="bandcamp-social" href="https://gatitoxoxo.bandcamp.com/"></a>
+          <a class="social-link-item" title="tiktok" id="tiktok-social" href="https://www.tiktok.com/@gatitoxoxoxo?_r=1&_t=ZT-91SM0gMiIXn"></a>
+          <a class="social-link-item" title="youtube" id="youtube-social" href="https://youtube.com/@gatitoxoxo?si=YfROh7c_Ub3e0ANg"></a>
         </div>
       </div>
     </div>
@@ -150,10 +150,9 @@
 
 <style scoped>
 
-  /* #page-wrapper {
-    width: calc(100vw - 15px);
-    height: 100vh;
-  } */
+  #page-wrapper {
+    height: 100%;
+  }
 
   .content-wrapper {
     width: 100%;
