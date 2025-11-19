@@ -1,16 +1,46 @@
 <script setup>
-    defineProps({
-        title: String,
-        genres: String,
-        arturl: String,
-        links: Object
-    })
+  import { ref } from 'vue';
+  const isPlayerVisible = ref(false)
+
+  function openPlayer() {
+    if (window.handlePlayer) {
+      window.handlePlayer(true)
+    }
+    isPlayerVisible.value = true
+  }
+
+  function closePlayer() {
+    if (window.handlePlayer) {
+      window.handlePlayer(false)
+    }
+    isPlayerVisible.value = false
+  }
+
+  defineProps({
+      title: String,
+      genres: String,
+      arturl: String,
+      links: Object
+  })
 </script>
 
 <template>
     <div class="track-art" :style="`background-image: url(${arturl})`">
+
       <div class="wing" id="left-wing"></div>
       <div class="wing" id="right-wing"></div>
+      <div v-if="!isPlayerVisible" class="player-control-button" id="open-player" @click="openPlayer">Listen</div>
+      <div v-if="isPlayerVisible" id="player-wrapper">
+        <div class="player-control-button" id="close-player" @click="closePlayer">Close Player</div>
+        <iframe
+          id="player"
+          width="100%"
+          height="166"
+          scrolling="no"
+          frameborder="no"
+          :src="`https://w.soundcloud.com/player/?url=${links.soundcloud}`">
+        </iframe>
+      </div>
     </div>
     <div class="track-info">
       <div class="track-name">{{ title }}</div>
@@ -63,6 +93,56 @@
     background-image: url("right-wing-large.svg");
     animation: 1.5s flapRight infinite;
   }
+
+  .player-control-button {
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 22px;
+    transition: 0.8s;
+    background: var(--accent-color);
+    color: #c35d7c;
+    cursor: pointer;
+  }
+
+  #open-player {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    border-radius: 5px;
+    border: 3px solid transparent;
+    animation: rotate-border 3s linear infinite;
+  }
+
+  @keyframes rotate-border {
+    0% { border-color: #7816b1; }
+    13% { border-width: 3px; }
+    25% { border-color: #c35d7c; }
+    37% { border-width: 2px; }
+    50% { border-color: #7816b1; }
+    63% { border-width: 3px; }
+    75% { border-color: #c35d7c; }
+    87% { border-width: 2px; }
+    100% { border-color: #7816b1; }
+  }
+
+  #close-player {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: max-content;
+    border: 2px solid #c35d7c;
+  }
+
+  #player-wrapper {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    transition: all 0.8s ease;
+    width: 100%;
+  }
+
+  /* #player {
+    border: 2px solid #c35d7c;
+  } */
   
   /* Info and Links Styling */
   .track-info {

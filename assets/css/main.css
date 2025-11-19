@@ -37,7 +37,6 @@ body {
     width: 100%;
     border: none;
     outline: none;
-    cursor: pointer;
     transition: all 0.2s ease-in-out;
     -ms-overflow-style: none; 
     scrollbar-width: none; 

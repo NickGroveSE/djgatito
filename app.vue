@@ -1,84 +1,118 @@
 <script setup>
   import Track from "../components/Track.vue"
-  import { reactive, onMounted } from 'vue';
+  import { reactive, ref, onMounted } from 'vue';
+
+  const config = useRuntimeConfig()
+  const clientId = config.public.soundcloudClientId
+  const userId = config.public.soundcloudUserId
   
   // Reactive Position for Tracks and Indicator
-  let trackState = reactive({position: 0, timer: null})
+  let trackState = reactive({position: 0, timer: null, playerOpen: false})
 
   // Menu state for mobile
   const isMenuOpen = ref(false)
 
   // Hardcoded Track Objects
-  const tracks = [
-    {
-      title: "EMBER",
-      genres: "Melodic House / Trance",
-      arturl: "https://i1.sndcdn.com/artworks-kbvMCr2xhjyQpfyK-gNwm4A-t500x500.jpg",
-      links: {
-        "soundcloud":"https://soundcloud.com/gatitoxoxo/ember"
-      }
-    },
-    {
-      title: "Winter Solstice",
-      genres: "Hardstyle / Guaracha / Tribal",
-      arturl: "https://i1.sndcdn.com/artworks-qBHfzjMu9Ep9pW9H-ZOxnVA-t500x500.jpg",
-      links: {
-        "soundcloud":"https://soundcloud.com/gatitoxoxo/winter-solstice"
-      }
-    },
-    {
-      title: "Diciembre Guarachoso",
-      genres: "Guaracha / Tribal",
-      arturl: "https://i1.sndcdn.com/artworks-kXQ29YKL9Ocs8zNc-idlo1g-t500x500.jpg",
-      links: {
-        "soundcloud":"https://soundcloud.com/gatitoxoxo/diciembre-guarachoso"
-      }
-    },
-    {
-      title: "Melt",
-      genres: "G-Tech",
-      arturl: "https://i1.sndcdn.com/artworks-S7L4hBBDPyWId487-ZmwNUQ-t500x500.jpg",
-      links: {
-        "soundcloud":"https://soundcloud.com/gatitoxoxo/melt-1"
-      }
-    },
-    {
-      title: "Verano Tribalero",
-      genres: "Guaracha / Tribal",
-      arturl: "https://i1.sndcdn.com/artworks-GzTy83Cdy8rdUFB9-QYWiqQ-t500x500.jpg",
-      links: {
-        "soundcloud":"https://soundcloud.com/gatitoxoxo/verano-tribalero"
-      }
-    },
-  ]
+  var tracks = ref([])
+  //   [
+  //   {
+  //     title: "EMBER",
+  //     genres: "Melodic House / Trance",
+  //     arturl: "https://i1.sndcdn.com/artworks-kbvMCr2xhjyQpfyK-gNwm4A-t500x500.jpg",
+  //     links: {
+  //       "soundcloud":"https://soundcloud.com/gatitoxoxo/ember"
+  //     }
+  //   },
+  //   {
+  //     title: "Winter Solstice",
+  //     genres: "Hardstyle / Guaracha / Tribal",
+  //     arturl: "https://i1.sndcdn.com/artworks-qBHfzjMu9Ep9pW9H-ZOxnVA-t500x500.jpg",
+  //     links: {
+  //       "soundcloud":"https://soundcloud.com/gatitoxoxo/winter-solstice"
+  //     }
+  //   },
+  //   {
+  //     title: "Diciembre Guarachoso",
+  //     genres: "Guaracha / Tribal",
+  //     arturl: "https://i1.sndcdn.com/artworks-kXQ29YKL9Ocs8zNc-idlo1g-t500x500.jpg",
+  //     links: {
+  //       "soundcloud":"https://soundcloud.com/gatitoxoxo/diciembre-guarachoso"
+  //     }
+  //   },
+  //   {
+  //     title: "Melt",
+  //     genres: "G-Tech",
+  //     arturl: "https://i1.sndcdn.com/artworks-S7L4hBBDPyWId487-ZmwNUQ-t500x500.jpg",
+  //     links: {
+  //       "soundcloud":"https://soundcloud.com/gatitoxoxo/melt-1"
+  //     }
+  //   },
+  //   {
+  //     title: "Verano Tribalero",
+  //     genres: "Guaracha / Tribal",
+  //     arturl: "https://i1.sndcdn.com/artworks-GzTy83Cdy8rdUFB9-QYWiqQ-t500x500.jpg",
+  //     links: {
+  //       "soundcloud":"https://soundcloud.com/gatitoxoxo/verano-tribalero"
+  //     }
+  //   },
+  // ])
   
   // Array for indicating which track is being shown in the Carousel
-  let indicator = [" indicated", "", "", "", ""]
+  let indicator = ref([" indicated", "", "", "", ""])
+
+  onBeforeMount(async () => {
+    // https://api-v2.soundcloud.com/users/1359350361/tracks?client_id=LMlJPYvzQSVyjYv7faMQl9W7OjTBCaq4&limit=5
+    const response = await fetch(
+      `/api/soundcloud/users/${userId}/tracks?client_id=${clientId}&limit=7`
+    )
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch tracks')
+    }
+    
+    const data = await response.json()
+    const trackBulkData = data.collection
+
+    console.log(trackBulkData)
+
+    tracks.value = trackBulkData.map(singleTrack => ({
+      title: singleTrack.title,
+      genres: singleTrack.genre,
+      arturl: singleTrack.artwork_url.replace("large", "t500x500"),
+      links: {
+        soundcloud: singleTrack.permalink_url
+      }
+    }))
+
+    // console.log(tracks)
+  })
 
   onMounted(() => {
     trackState.timer = setInterval(advancedCarousel, 60000)
   })
 
   function handleCarouselClick(index) {
-    indicator[trackState.position] = ""
-    indicator[index] = " indicated"
+    indicator.value[trackState.position] = ""
+    indicator.value[index] = " indicated"
 
     trackState.position = index
   }
 
   function advancedCarousel() {
-    if (tracks.length - 1 <= trackState.position) {
-      clearInteral(trackState.timer)
-      trackState.timer = setInterval(advancedCarousel, 60000)
-      indicator[trackState.position] = ""
-      trackState.position = 0
-      indicator[trackState.position] = " indicated"
-    } else {
-      clearInteral(trackState.timer)
-      trackState.timer = setInterval(advancedCarousel, 60000)
-      indicator[trackState.position] = ""
-      trackState.position = trackState.position + 1
-      indicator[trackState.position] = " indicated"
+    if (!trackState.playerOpen) {
+      if (tracks.value.length - 1 <= trackState.position) {
+        clearInterval(trackState.timer)
+        trackState.timer = setInterval(advancedCarousel, 60000)
+        indicator.value[trackState.position] = ""
+        trackState.position = 0
+        indicator.value[trackState.position] = " indicated"
+      } else {
+        clearInterval(trackState.timer)
+        trackState.timer = setInterval(advancedCarousel, 60000)
+        indicator.value[trackState.position] = ""
+        trackState.position = trackState.position + 1
+        indicator.value[trackState.position] = " indicated"
+      }
     }
   }
 
@@ -88,6 +122,11 @@
 
   function closeMenu() {
     isMenuOpen.value = false
+  }
+
+  window.handlePlayer = (isOpen) => {
+    console.log("Player Open")
+    trackState.playerOpen = isOpen
   }
 
 </script>
@@ -112,6 +151,7 @@
   <div class="content-wrapper">
     <div class="track-panel">
       <Track 
+        v-if="tracks.length > 0"
         class="track"
         :title="tracks[trackState.position].title"
         :genres="tracks[trackState.position].genres"
@@ -280,6 +320,7 @@
     border: 10px solid rgba(255,254,230,0);
     border-radius: 5px;
     transition: 0.8s;
+    cursor: pointer;
   }
 
   .carousel-nav-item:hover {
@@ -436,6 +477,14 @@
       font-size: 16px;
     }
 
+  }
+  
+  @media (max-height: 700px) {
+
+    footer {
+      height: 20px;
+    }
+    
   }
 
   /* Small mobile adjustments */
