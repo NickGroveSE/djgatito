@@ -89,6 +89,11 @@
 
   onMounted(() => {
     trackState.timer = setInterval(advancedCarousel, 60000)
+
+    window.handlePlayer = (isOpen) => {
+      console.log("Player Open")
+      trackState.playerOpen = isOpen
+    }
   })
 
   function handleCarouselClick(index) {
@@ -124,10 +129,7 @@
     isMenuOpen.value = false
   }
 
-  window.handlePlayer = (isOpen) => {
-    console.log("Player Open")
-    trackState.playerOpen = isOpen
-  }
+
 
 </script>
 

@@ -114,15 +114,11 @@
   }
 
   @keyframes rotate-border {
-    0% { border-color: #7816b1; }
-    13% { border-width: 3px; }
-    25% { border-color: #c35d7c; }
-    37% { border-width: 2px; }
-    50% { border-color: #7816b1; }
-    63% { border-width: 3px; }
-    75% { border-color: #c35d7c; }
-    87% { border-width: 2px; }
-    100% { border-color: #7816b1; }
+    0% { border-color: #7816b1; color: #7816b1; }
+    25% { border-color: #c35d7c; color: #c35d7c; }
+    50% { bottom: 17px; left: 17px; border-width: 5px; border-color: #7816b1; color: #7816b1; }
+    75% { border-color: #c35d7c; color: #c35d7c; }
+    100% { border-color: #7816b1; color: #7816b1; }
   }
 
   #close-player {
