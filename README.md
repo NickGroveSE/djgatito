@@ -52,6 +52,7 @@ netlify/functions/soundcloud.js
 The other integration is with Soundcloud's Embed Player:<br>
 <br>
 components/Track.vue
+
 ```
     <div v-if="!isPlayerVisible" class="player-control-button" id="open-player" @click="openPlayer">Listen</div>
     <div v-if="isPlayerVisible" id="player-wrapper">
