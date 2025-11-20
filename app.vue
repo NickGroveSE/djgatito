@@ -61,9 +61,13 @@
   let indicator = ref([" indicated", "", "", "", ""])
 
   onBeforeMount(async () => {
-    // https://api-v2.soundcloud.com/users/1359350361/tracks?client_id=LMlJPYvzQSVyjYv7faMQl9W7OjTBCaq4&limit=5
+    // Dev
+    // const response = await fetch(
+    //   `/api/soundcloud/users/${userId}/tracks?client_id=${clientId}&limit=7`
+    // )
+
     const response = await fetch(
-      `/api/soundcloud/users/${userId}/tracks?client_id=${clientId}&limit=7`
+      `https://api-v2.soundcloud.com/users/${userId}/tracks?client_id=${clientId}&limit=7`
     )
 
     if (!response.ok) {
