@@ -49,7 +49,7 @@ body::-webkit-scrollbar {
 
 /* Links Styling and Hover */
 #email-link {
-  background-image: url("mail_email_icon.svg");
+  background-image: url("/mail_email_icon.svg");
   background-size: cover;
 }
 
@@ -58,7 +58,7 @@ body::-webkit-scrollbar {
 }
 
 #tiktok-social {
-  background-image: url("tiktok-square.svg");
+  background-image: url("/tiktok-square.svg");
   background-size: cover;
 }
 
@@ -67,7 +67,7 @@ body::-webkit-scrollbar {
 }
 
 #insta-social {
-  background-image: url("instagram-square.svg");
+  background-image: url("/instagram-square.svg");
   background-size: cover;
 }
 
@@ -76,7 +76,7 @@ body::-webkit-scrollbar {
 }
 
 #soundcloud-social {
-  background-image: url("soundcloud-square.svg");
+  background-image: url("/soundcloud-square.svg");
   background-size: cover;
 }
 
@@ -85,7 +85,7 @@ body::-webkit-scrollbar {
 }
 
 #youtube-social {
-  background-image: url("youtube-square.svg");
+  background-image: url("/youtube-square.svg");
   background-size: cover;
 }
 
@@ -94,7 +94,7 @@ body::-webkit-scrollbar {
 }
 
 #bandcamp-social {
-  background-image: url("bandcamp-svgrepo-com.svg");
+  background-image: url("/bandcamp-svgrepo-com.svg");
   background-size: cover;
 }
 
