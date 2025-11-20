@@ -66,9 +66,9 @@
     //   `/api/soundcloud/users/${userId}/tracks?client_id=${clientId}&limit=7`
     // )
 
-  const response = await fetch(
-    `/.netlify/functions/soundcloud?userId=${userId}&clientId=${clientId}&limit=7`
-  )
+    const response = await fetch(
+      `/.netlify/functions/soundcloud?userId=${userId}&clientId=${clientId}&limit=7`
+    )
 
     if (!response.ok) {
       throw new Error('Failed to fetch tracks')
