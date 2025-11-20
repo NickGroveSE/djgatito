@@ -1,8 +1,8 @@
 # djgatito.com
 
-![screenshot-idle](doc_assets/screenshot-idle.png)
+![screenshot-idle](docs_assets/screenshot-idle.png)
 
-![screenshot-player](doc_assets/screenshot-player.png)
+![screenshot-player](docs_assets/screenshot-player.png)
 
 ## Design Considerations
 
