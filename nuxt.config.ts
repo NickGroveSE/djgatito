@@ -1,12 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: true,
   devtools: { enabled: true },
   css: [
     '@/assets/css/main.css'
   ],
   nitro: {
-    preset: 'static',
+    preset: 'netlify',
     devProxy: {
       '/api/soundcloud': {
         target: 'https://api-v2.soundcloud.com',

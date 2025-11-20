@@ -1,12 +1,6 @@
 [build]
-  command = "npm run generate"
+  command = "npm run build"
   publish = ".output/public"
-
-# Serve static assets directly (don't redirect)
-[[redirects]]
-  from = "/_nuxt/*"
-  to = "/_nuxt/:splat"
-  status = 200
 
 # Redirect all other routes to index.html for SPA routing
 [[redirects]]

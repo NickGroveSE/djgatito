@@ -83,14 +83,14 @@
   #left-wing {
     top: 190px;
     left: -104px;
-    background-image: url("left-wing-large.svg");
+    background-image: url("/left-wing-large.svg");
     animation: 1.5s flapLeft infinite;
   }
 
   #right-wing {
     top: 95px;
     left: 414px;
-    background-image: url("right-wing-large.svg");
+    background-image: url("/right-wing-large.svg");
     animation: 1.5s flapRight infinite;
   }
 
