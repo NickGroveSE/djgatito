@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     '@/assets/css/main.css'
   ],
   nitro: {
-    preset: 'netlify',
     devProxy: {
       '/api/soundcloud': {
         target: 'https://api-v2.soundcloud.com',
