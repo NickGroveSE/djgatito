@@ -1,75 +1,9 @@
-# Nuxt 3 Minimal Starter
+# djgatito.com
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+![screenshot-idle](doc_assets/screenshot-idle.png)
 
-## Setup
+![screenshot-player](doc_assets/screenshot-player.png)
 
-Make sure to install the dependencies:
+## Design Considerations
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+When I started designing this website for dj gatito I wanted to create a simple and seamless website that portrays her brand perfectly. The objective of the aesthetic choices was to depict dreaminess and cuteness, and to present the interface to the user as a living, breathing artifact. This is represented in many ways including the fluttering song artwork with its cartoon cupid wings, the pink metallic backdrop, the deep shadows, and the shades of cream and pink. Diversions from the main aesthetic in the form of social link colors and the design of the open and close player buttons was intentional to allow the user to easily discriminate the technological utility of the website from the artistic details.
